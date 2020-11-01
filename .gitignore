@@ -3,14 +3,14 @@
 /packages
 
 # Compiled binaries and libraries.
-/bin
-/bin64
-/bin_unix
 /sauerbraten.app
 /src/lib
 /src/lib64
 /src/sauer_client
 /src/sauer_server
+*.exe
+*.dll
+*.lib
 *.o
 *.a
 *.h.gch
