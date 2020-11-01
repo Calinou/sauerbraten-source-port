@@ -1,0 +1,14 @@
+# Not redistributable legally.
+# The player must download it from an external source.
+/packages
+
+# Compiled binaries.
+/bin
+/bin64
+/bin_unix
+/sauerbraten.app
+/src/lib
+/src/lib64
+
+# HTML documentation which is already available on sauerbraten.org or in the SVN repository.
+/docs
