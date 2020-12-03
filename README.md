@@ -23,3 +23,4 @@
 - **HUD improvements:**
   - Armor count is now colored depending on the current armor type.
   - `/hudicons 0` variable to hide icons on the HUD (defaults to `1`).
+  - FPS counter is now colored depending on the framerate.

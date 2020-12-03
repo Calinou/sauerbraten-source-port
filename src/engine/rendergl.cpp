@@ -2250,8 +2250,24 @@ void gl_drawhud()
                 int nextfps[3];
                 getfps(nextfps[0], nextfps[1], nextfps[2]);
                 loopi(3) if(prevfps[i]==curfps[i]) curfps[i] = nextfps[i];
-                if(showfpsrange) draw_textf("fps %d+%d-%d", conw-7*FONTH, conh-FONTH*3/2, curfps[0], curfps[1], curfps[2]);
-                else draw_textf("fps %d", conw-5*FONTH, conh-FONTH*3/2, curfps[0]);
+
+                const char* fpscolor;
+                if (curfps[0] < 30) {
+                    fpscolor = "\f3";
+                } else if (curfps[0] < 45) {
+                    fpscolor = "\f6";
+                } else if (curfps[0] < 65) {
+                    fpscolor = "\f2";
+                } else if (curfps[0] < 130) {
+                    fpscolor = "\f7";
+                } else if (curfps[0] < 205) {
+                    fpscolor = "\f8";
+                } else {
+                    fpscolor = "\f0";
+                }
+
+                if(showfpsrange) draw_textf("%s%d+%d-%d FPS", conw-7*FONTH, conh-FONTH*3/2, fpscolor, curfps[0], curfps[1], curfps[2]);
+                else draw_textf("%s%d FPS", conw-5*FONTH, conh-FONTH*3/2, fpscolor, curfps[0]);
                 roffset += FONTH;
             }
 
