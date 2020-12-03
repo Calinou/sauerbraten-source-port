@@ -1237,12 +1237,27 @@ namespace game
             return false;
         }
 
+        const char* pingcolor;
+        if(attr.length() >= 4) {
+            if(ping < 70) {
+                pingcolor = "\f0";
+            } else if(ping < 135) {
+                pingcolor = "\f2";
+            } else if(ping < 200) {
+                pingcolor = "\f6";
+            } else {
+                pingcolor = "\f3";
+            }
+        } else {
+            pingcolor = "";
+        }
+
         switch(i)
         {
             case 0:
             {
                 const char *icon = attr.inrange(3) && np >= attr[3] ? "serverfull" : (attr.inrange(4) ? mastermodeicon(attr[4], "serverunk") : "serverunk");
-                if(g->buttonf("%d ", 0xFFFFDD, icon, ping)&G3D_UP) return true;
+                if(g->buttonf("%s%d ", 0xFFFFFF, icon, pingcolor, ping)&G3D_UP) return true;
                 break;
             }
 
