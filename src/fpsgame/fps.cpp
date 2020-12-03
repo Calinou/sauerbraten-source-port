@@ -897,6 +897,7 @@ namespace game
     }
 
     VARP(healthcolors, 0, 1, 1);
+    VARP(hudicons, 0, 1, 1);
 
     void drawhudicons(fpsent *d)
     {
@@ -909,7 +910,19 @@ namespace game
         draw_text(health, (HICON_X + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, healthcolor.r, healthcolor.g, healthcolor.b);
         if(d->state!=CS_DEAD)
         {
-            if(d->armour) draw_textf("%d", (HICON_X + HICON_STEP + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, d->armour);
+            const char* armorcolor;
+            switch(d->armourtype) {
+                case A_YELLOW:
+                    armorcolor = "\f2";
+                    break;
+                case A_GREEN:
+                    armorcolor = "\f0";
+                    break;
+                case A_BLUE:
+                    armorcolor = "\f1";
+                    break;
+            }
+            if(d->armour) draw_textf("%s%d", (HICON_X + HICON_STEP + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, armorcolor, d->armour);
             draw_textf("%d", (HICON_X + 2*HICON_STEP + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, d->ammo[d->gunselect]);
         }
 
@@ -929,13 +942,13 @@ namespace game
             pophudmatrix();
         }
 
-        drawicon(HICON_HEALTH, HICON_X, HICON_Y);
+        if (hudicons) drawicon(HICON_HEALTH, HICON_X, HICON_Y);
         if(d->state!=CS_DEAD)
         {
-            if(d->armour) drawicon(HICON_BLUE_ARMOUR+d->armourtype, HICON_X + HICON_STEP, HICON_Y);
-            drawicon(HICON_FIST+d->gunselect, HICON_X + 2*HICON_STEP, HICON_Y);
-            if(d->quadmillis) drawicon(HICON_QUAD, HICON_X + 3*HICON_STEP, HICON_Y);
-            if(ammohud) drawammohud(d);
+            if(hudicons && d->armour) drawicon(HICON_BLUE_ARMOUR+d->armourtype, HICON_X + HICON_STEP, HICON_Y);
+            if(hudicons) drawicon(HICON_FIST+d->gunselect, HICON_X + 2*HICON_STEP, HICON_Y);
+            if(hudicons && d->quadmillis) drawicon(HICON_QUAD, HICON_X + 3*HICON_STEP, HICON_Y);
+            if(hudicons && ammohud) drawammohud(d);
         }
     }
 
