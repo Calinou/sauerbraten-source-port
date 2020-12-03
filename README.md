@@ -2,7 +2,8 @@
 
 ## Features
 
-- Colored pings in server browser and scoreboard (greener = better).
+- Improved coloring for player numbers in the server browser (gray = empty, yellow = almost full, red = full).
+- Colored pings in the server browser and scoreboard (greener = better).
 - Strafe movement animation is now used when moving diagonally forwards.
 - Tweaked default color for bot waypoints to make them more visible.
 - Customizable color for bot waypoints (e.g. `/showwaypointscolour 0xffffff`).
