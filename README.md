@@ -3,6 +3,7 @@
 ## Features
 
 - Colored pings in server browser and scoreboard (greener = better).
+- Strafe movement animation is now used when moving diagonally forwards.
 - Tweaked default color for bot waypoints to make them more visible.
 - Customizable color for bot waypoints (e.g. `/showwaypointscolour 0xffffff`).
 - `positionpacketdelay` and `disableenetlimits` variables ported from
