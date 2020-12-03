@@ -228,6 +228,8 @@ namespace game
         adddecal(DECAL_BLOOD, vec(b->o).sub(vec(surface).mul(b->radius)), surface, 2.96f/b->bounces, bvec(0x60, 0xFF, 0xFF), rnd(4));
     }
         
+    HVARP(grenadetrailcolour, 0, 0x404040, 0xFFFFFF);
+
     void updatebouncers(int time)
     {
         loopv(bouncers)
@@ -236,7 +238,7 @@ namespace game
             if(bnc.bouncetype==BNC_GRENADE && bnc.vel.magnitude() > 50.0f)
             {
                 vec pos = bnc.offsetpos();
-                regular_particle_splash(PART_SMOKE, 1, 150, pos, 0x404040, 2.4f, 50, -20);
+                regular_particle_splash(PART_SMOKE, 1, 150, pos, grenadetrailcolour, 2.4f, 50, -20);
             }
             vec old(bnc.o);
             bool stopped = false;
@@ -520,6 +522,8 @@ namespace game
         return true;
     }
 
+    HVARP(rockettrailcolour, 0, 0x404040, 0xFFFFFF);
+
     void updateprojectiles(int time)
     {
         loopv(projs)
@@ -562,7 +566,7 @@ namespace game
                     pos.add(vec(p.offset).mul(p.offsetmillis/float(OFFSETMILLIS)));
                     if(guns[p.gun].part)
                     {
-                         regular_particle_splash(PART_SMOKE, 2, 300, pos, 0x404040, 0.6f, 150, -20);
+                         regular_particle_splash(PART_SMOKE, 2, 300, pos, rockettrailcolour, 0.6f, 150, -20);
                          int color = 0xFFFFFF;
                          switch(guns[p.gun].part)
                          {
@@ -570,7 +574,7 @@ namespace game
                          }
                          particle_splash(guns[p.gun].part, 1, 1, pos, color, 4.8f, 150, 20);
                     }
-                    else regular_particle_splash(PART_SMOKE, 2, 300, pos, 0x404040, 2.4f, 50, -20);
+                    else regular_particle_splash(PART_SMOKE, 2, 300, pos, rockettrailcolour, 2.4f, 50, -20);
                 }
             }
             if(exploded)
@@ -588,6 +592,7 @@ namespace game
 
     VARP(muzzleflash, 0, 1, 1);
     VARP(muzzlelight, 0, 1, 1);
+    HVARP(rifletrailcolour, 0, 0x404040, 0xFFFFFF);
 
     void shoteffects(int gun, const vec &from, const vec &to, fpsent *d, bool local, int id, int prevaction)     // create visual effect from a shot
     {
@@ -650,7 +655,7 @@ namespace game
 
             case GUN_RIFLE:
                 particle_splash(PART_SPARK, 200, 250, to, 0xB49B4B, 0.24f);
-                particle_trail(PART_SMOKE, 500, hudgunorigin(gun, from, to, d), to, 0x404040, 0.6f, 20);
+                particle_trail(PART_SMOKE, 500, hudgunorigin(gun, from, to, d), to, rifletrailcolour, 0.6f, 20);
                 if(muzzleflash && d->muzzle.x >= 0)
                     particle_flare(d->muzzle, d->muzzle, 150, PART_MUZZLE_FLASH3, 0xFFFFFF, 1.25f, d);
                 if(!local) adddecal(DECAL_BULLET, to, vec(from).sub(to).safenormalize(), 3.0f);
