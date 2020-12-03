@@ -4,6 +4,9 @@
 
 - Tweaked default color for bot waypoints to make them more visible.
 - Customizable color for bot waypoints (e.g. `/showwaypointscolour 0xffffff`).
+- `positionpacketdelay` and `disableenetlimits` variables ported from
+  [sauer-sdl2](https://github.com/extra-a/sauer-sdl2).
+  Both are set to values optimized for responsive, jitter-free gameplay by default.
 - Tweaked variable limits:
   - `avatarfov` (`10..150` -> `1..179`)
   - `avatarzoomfov` (`10..60` -> `1..179`)

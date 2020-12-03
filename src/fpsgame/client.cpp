@@ -1052,10 +1052,13 @@ namespace game
         sendclientpacket(p.finalize(), 1);
     }
 
+    // lower values make client movement appear more reactive and less jittery to other players
+    VARP(positionpacketdelay, 8, 8, 33);
+
     void c2sinfo(bool force) // send update to the server
     {
         static int lastupdate = -1000;
-        if(totalmillis - lastupdate < 33 && !force) return; // don't update faster than 30fps
+        if(totalmillis - lastupdate < positionpacketdelay && !force) return;
         lastupdate = totalmillis;
         sendpositions();
         sendmessages();

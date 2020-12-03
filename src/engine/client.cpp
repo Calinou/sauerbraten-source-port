@@ -13,15 +13,22 @@ bool multiplayer(bool msg)
     return val;
 }
 
-void setrate(int rate)
-{
-   if(!curpeer) return;
-   enet_host_bandwidth_limit(clienthost, rate*1024, rate*1024);
-}
-
+void setrate(int rate);
 VARF(rate, 0, 0, 1024, setrate(rate));
 
 void throttle();
+// disable enet limits (fixes unnecessary client's position packet drops)
+VARFP(disableenetlimits, 0, 1, 1, { throttle(); setrate(rate); } );
+
+void setrate(int rate)
+{
+   if(!curpeer) return;
+    if(disableenetlimits) {
+        enet_host_bandwidth_limit(clienthost, 0, 0);
+    } else {
+   enet_host_bandwidth_limit(clienthost, rate*1024, rate*1024);
+}
+}
 
 VARF(throttle_interval, 0, 5, 30, throttle());
 VARF(throttle_accel,    0, 2, 32, throttle());
@@ -31,7 +38,11 @@ void throttle()
 {
     if(!curpeer) return;
     ASSERT(ENET_PEER_PACKET_THROTTLE_SCALE==32);
+    if(disableenetlimits) {
+        enet_peer_throttle_configure(curpeer, 1000, 32, 0);
+    } else {
     enet_peer_throttle_configure(curpeer, throttle_interval*1000, throttle_accel, throttle_decel);
+}
 }
 
 bool isconnected(bool attempt, bool local)
