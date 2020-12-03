@@ -1361,6 +1361,7 @@ namespace ai
     }
 
     VAR(showwaypoints, 0, 0, 1);
+    HVARP(showwaypointscolour, 0, 0x2040FF, 0xFFFFFF);
     VAR(showwaypointsradius, 0, 200, 10000);
 
     const char *stnames[AI_S_MAX] = {
@@ -1457,11 +1458,10 @@ namespace ai
                 {
                      int link = w.links[j];
                      if(!link) break;
-                     particle_flare(w.o, waypoints[link].o, 1, PART_STREAK, 0x0000FF);
+                     particle_flare(w.o, waypoints[link].o, 1, PART_STREAK, showwaypointscolour);
                 }
             }
 
         }
     }
 }
-
