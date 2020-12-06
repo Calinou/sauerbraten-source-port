@@ -907,9 +907,9 @@ namespace game
 
         defformatstring(health, "%d", d->state==CS_DEAD ? 0 : d->health);
         bvec healthcolor = bvec::hexcolor(healthcolors && !m_insta ? (d->state==CS_DEAD ? 0x808080 : (d->health<=25 ? 0xFF0000 : (d->health<=50 ? 0xFF8000 : (d->health<=100 ? 0xFFFFFF : 0x40C0FF)))) : 0xFFFFFF);
-        if(!m_insta) draw_text(health, (HICON_X + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, healthcolor.r, healthcolor.g, healthcolor.b);
         if(d->state!=CS_DEAD)
         {
+            if(!m_insta) draw_text(health, (HICON_X + HICON_SIZE + HICON_SPACE)/2, HICON_TEXTY/2, healthcolor.r, healthcolor.g, healthcolor.b);
             const char* armorcolor;
             switch(d->armourtype) {
                 case A_YELLOW:
@@ -942,13 +942,13 @@ namespace game
             pophudmatrix();
         }
 
-        if (!m_insta && hudicons) drawicon(HICON_HEALTH, HICON_X, HICON_Y);
-        if(!m_insta && d->state!=CS_DEAD)
+        if(hudicons && d->state!=CS_DEAD && !m_insta)
         {
-            if(hudicons && d->armour) drawicon(HICON_BLUE_ARMOUR+d->armourtype, HICON_X + HICON_STEP, HICON_Y);
-            if(hudicons) drawicon(HICON_FIST+d->gunselect, HICON_X + 2*HICON_STEP, HICON_Y);
-            if(hudicons && d->quadmillis) drawicon(HICON_QUAD, HICON_X + 3*HICON_STEP, HICON_Y);
-            if(hudicons && ammohud) drawammohud(d);
+            drawicon(HICON_HEALTH, HICON_X, HICON_Y);
+            if(d->armour) drawicon(HICON_BLUE_ARMOUR+d->armourtype, HICON_X + HICON_STEP, HICON_Y);
+            drawicon(HICON_FIST+d->gunselect, HICON_X + 2*HICON_STEP, HICON_Y);
+            if(d->quadmillis) drawicon(HICON_QUAD, HICON_X + 3*HICON_STEP, HICON_Y);
+            if(ammohud) drawammohud(d);
         }
     }
 

@@ -21,7 +21,8 @@
   - `shadowmapsize` (`7..11` -> `7..12`)
   - `zoomfov` (`10..60` -> `1..179`)
 - **HUD improvements:**
-  - Armor count is now colored depending on the current armor type.
   - `/hudicons 0` variable to hide icons on the HUD (defaults to `1`).
-  - Health and ammo on the HUD are now hidden in instagib modes.
+  - Armor count is now colored depending on the current armor type.
+  - Health and ammo are now hidden in instagib modes.
+  - Health is now hidden while dead.
   - FPS counter is now colored depending on the framerate.
