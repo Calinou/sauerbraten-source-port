@@ -26,3 +26,4 @@
   - Health and ammo are now hidden in instagib modes.
   - Health is now hidden while dead.
   - FPS counter is now colored depending on the framerate.
+  - Game clock now becomes red (instead of yellow) when there is less than 1 minute left, and yellow when there are less than 3 minutes left.

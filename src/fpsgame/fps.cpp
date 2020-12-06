@@ -957,6 +957,7 @@ namespace game
     HVARP(gameclockcolour, 0, 0xFFFFFF, 0xFFFFFF);
     VARP(gameclockalpha, 0, 255, 255);
     HVARP(gameclocklowcolour, 0, 0xFFC040, 0xFFFFFF);
+    HVARP(gameclockverylowcolour, 0, 0xFF3322, 0xFFFFFF);
     VARP(gameclockalign, -1, 0, 1);
     FVARP(gameclockx, 0, 0.50f, 1);
     FVARP(gameclocky, 0, 0.03f, 1);
@@ -979,7 +980,15 @@ namespace game
         hudmatrix.scale(gameclockscale, gameclockscale, 1);
         flushhudmatrix();
 
-        int color = mins < 1 ? gameclocklowcolour : gameclockcolour;
+        int color;
+        if (mins < 1) {
+            color = gameclockverylowcolour;
+        } else if (mins <= 3) {
+            color = gameclocklowcolour;
+        } else {
+            color = gameclockcolour;
+        }
+
         draw_text(buf, int(offset.x), int(offset.y), (color>>16)&0xFF, (color>>8)&0xFF, color&0xFF, gameclockalpha);
 
         pophudmatrix();
