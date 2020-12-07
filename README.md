@@ -29,6 +29,7 @@
   - Game clock now becomes red (instead of yellow) when there is less than 1 minute left, and yellow when there are less than 3 minutes left.
 - **Tweaked variable defaults:**
   - `minimapsize` (`8` -> `10`)
+  - `showwaypointsradius` (`200` -> `500`)
 - **Tweaked variable limits:**
   - `avatarfov` (`10..150` -> `1..179`)
   - `avatarzoomfov` (`10..60` -> `1..179`)

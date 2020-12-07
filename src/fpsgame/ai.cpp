@@ -1362,7 +1362,7 @@ namespace ai
 
     VAR(showwaypoints, 0, 0, 1);
     HVARP(showwaypointscolour, 0, 0x2040FF, 0xFFFFFF);
-    VAR(showwaypointsradius, 0, 200, 10000);
+    VAR(showwaypointsradius, 0, 500, 10000);
 
     const char *stnames[AI_S_MAX] = {
         "wait", "defend", "pursue", "interest"
