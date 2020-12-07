@@ -31,7 +31,7 @@ namespace entities
             case BARREL:
             case PLATFORM:
             case ELEVATOR:
-                int yaw = (int(e.attr1)%360 + 360)%360 + 7; 
+                int yaw = (int(e.attr1)%360 + 360)%360 + 7;
                 e.attr1 = yaw - yaw%15;
                 break;
         }
@@ -204,13 +204,16 @@ namespace entities
         if(ents.inrange(tp) && ents[tp]->type == TELEPORT)
         {
             extentity &e = *ents[tp];
-            if(e.attr4 >= 0) 
+            if(e.attr4 >= 0)
             {
                 int snd = S_TELEPORT, flags = 0;
                 if(e.attr4 > 0) { snd = e.attr4; flags = SND_MAP; }
                 fpsent *h = followingplayer(player1);
                 playsound(snd, d==h ? NULL : &e.o, NULL, flags);
                 if(d!=h && ents.inrange(td) && ents[td]->type == TELEDEST) playsound(snd, &ents[td]->o, NULL, flags);
+
+                adddynlight(e.o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                adddynlight(ents[td]->o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
             }
         }
         if(local && d->clientnum >= 0)
@@ -236,6 +239,8 @@ namespace entities
                 int snd = S_JUMPPAD, flags = 0;
                 if(e.attr4 > 0) { snd = e.attr4; flags = SND_MAP; }
                 playsound(snd, d == followingplayer(player1) ? NULL : &e.o, NULL, flags);
+
+                adddynlight(e.o, 16, vec(0.4f, 1.0f, 0.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
             }
         }
         if(local && d->clientnum >= 0)
@@ -706,4 +711,3 @@ namespace entities
     }
 #endif
 }
-

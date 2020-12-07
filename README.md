@@ -13,6 +13,8 @@
   [sauer-sdl2](https://github.com/extra-a/sauer-sdl2).
   Both are set to values optimized for responsive, jitter-free gameplay by default.
 - **Improved dynamic light effects:**
+  - Teleports and teledests now emit a blue dynamic light when used.
+  - Jumppads now emit a green dynamic light when used.
   - Hitscan shots now emit a dynamic light at the point of impact.
 - **HUD improvements:**
   - `/hudicons 0` variable to hide icons on the HUD (defaults to `1`).
