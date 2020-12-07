@@ -171,7 +171,7 @@ namespace game
             if(bouncetype == BNC_GRENADE && offsetmillis > 0 && offset.z < 0)
                 offsetheight = raycube(vec(o.x + offset.x, o.y + offset.y, o.z), vec(0, 0, -1), -offset.z);
             else offsetheight = -1;
-        } 
+        }
     };
 
     vector<bouncer *> bouncers;
@@ -227,7 +227,7 @@ namespace game
         b->bounces++;
         adddecal(DECAL_BLOOD, vec(b->o).sub(vec(surface).mul(b->radius)), surface, 2.96f/b->bounces, bvec(0x60, 0xFF, 0xFF), rnd(4));
     }
-        
+
     HVARP(grenadetrailcolour, 0, 0x404040, 0xFFFFFF);
 
     void updatebouncers(int time)
@@ -533,7 +533,7 @@ namespace game
             int qdam = guns[p.gun].damage*(p.owner->quadmillis ? 4 : 1);
             if(p.owner->type==ENT_AI) qdam /= MONSTERDAMAGEFACTOR;
             vec dv;
-            float dist = p.to.dist(p.o, dv); 
+            float dist = p.to.dist(p.o, dv);
             dv.mul(time/max(dist*1000/p.speed, float(time)));
             vec v = vec(p.o).add(dv);
             bool exploded = false;
@@ -615,6 +615,12 @@ namespace game
                     if(!local) adddecal(DECAL_BULLET, rays[i], vec(from).sub(rays[i]).safenormalize(), 2.0f);
                 }
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), 30, vec(0.5f, 0.375f, 0.25f), 100, 100, DL_FLASH, 0, vec(0, 0, 0), d);
+
+                // add hitscan projectile impact effect
+                // change effect radius depending on shot distance to simulate a large area of effect
+                const vec dir = vec(from).sub(to).safenormalize();
+                adddynlight(vec(to).madd(dir, 4), min(40.0, vec(from).dist(to) * 0.15), vec(0.5f, 0.375f, 0.25f), 225, 0);
+
                 break;
             }
 
@@ -627,6 +633,11 @@ namespace game
                     particle_flare(d->muzzle, d->muzzle, gun==GUN_CG ? 100 : 200, PART_MUZZLE_FLASH1, 0xFFFFFF, gun==GUN_CG ? 2.25f : 1.25f, d);
                 if(!local) adddecal(DECAL_BULLET, to, vec(from).sub(to).safenormalize(), 2.0f);
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), gun==GUN_CG ? 30 : 15, vec(0.5f, 0.375f, 0.25f), gun==GUN_CG ? 50 : 100, gun==GUN_CG ? 50 : 100, DL_FLASH, 0, vec(0, 0, 0), d);
+
+                // add hitscan projectile impact effect
+                const vec dir = vec(from).sub(to).safenormalize();
+                adddynlight(vec(to).madd(dir, 4), 6, vec(0.5f, 0.375f, 0.25f), 225, 0);
+
                 break;
             }
 
@@ -660,6 +671,12 @@ namespace game
                     particle_flare(d->muzzle, d->muzzle, 150, PART_MUZZLE_FLASH3, 0xFFFFFF, 1.25f, d);
                 if(!local) adddecal(DECAL_BULLET, to, vec(from).sub(to).safenormalize(), 3.0f);
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), 25, vec(0.5f, 0.375f, 0.25f), 75, 75, DL_FLASH, 0, vec(0, 0, 0), d);
+
+                // add hitscan projectile impact effect
+                // larger radius than pistol/CG as the rifle is more powerful
+                const vec dir = vec(from).sub(to).safenormalize();
+                adddynlight(vec(to).madd(dir, 4), 8, vec(0.5f, 0.375f, 0.25f), 225, 0);
+
                 break;
         }
 
@@ -751,7 +768,7 @@ namespace game
         {
             dynent *hits[MAXRAYS];
             int maxrays = guns[d->gunselect].rays;
-            loopi(maxrays) 
+            loopi(maxrays)
             {
                 if((hits[i] = intersectclosest(from, rays[i], d, dist))) shorten(from, rays[i], dist);
                 else adddecal(DECAL_BULLET, rays[i], vec(from).sub(rays[i]).safenormalize(), 2.0f);
@@ -855,7 +872,7 @@ namespace game
     static const char * const gibnames[3] = { "gibs/gib01", "gibs/gib02", "gibs/gib03" };
     static const char * const debrisnames[4] = { "debris/debris01", "debris/debris02", "debris/debris03", "debris/debris04" };
     static const char * const barreldebrisnames[4] = { "barreldebris/debris01", "barreldebris/debris02", "barreldebris/debris03", "barreldebris/debris04" };
-         
+
     void preloadbouncers()
     {
         loopi(sizeof(projnames)/sizeof(projnames[0])) preloadmodel(projnames[i]);
@@ -1005,4 +1022,3 @@ namespace game
         }
     }
 };
-
