@@ -22,6 +22,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - `positionpacketdelay` and `disableenetlimits` variables ported from
   [sauer-sdl2](https://github.com/extra-a/sauer-sdl2).
   Both are set to values optimized for responsive, jitter-free gameplay by default.
+- Blob shadows are now displayed when shadow maps are enabled to fake ambient occlusion.
+- Tweaked blob shadows to be more subtle and fade more progressively when jumping.
 - **Improved hudgun swaying:**
   - Slightly decreased overall swaying speed.
   - Increased swaying speed when moving forward/backward to compensate.

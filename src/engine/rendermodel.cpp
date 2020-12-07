@@ -804,7 +804,7 @@ void rendermodel(entitylight *light, const char *mdl, int anim, const vec &o, fl
     if(!m) return;
     vec center(0, 0, 0), bbradius(0, 0, 0);
     float radius = 0;
-    bool shadow = !shadowmap && !glaring && (flags&(MDL_SHADOW|MDL_DYNSHADOW)) && showblobs;
+    bool shadow = !glaring && (flags&(MDL_SHADOW|MDL_DYNSHADOW)) && showblobs;
 
     if(flags&(MDL_CULL_VFC|MDL_CULL_DIST|MDL_CULL_OCCLUDED|MDL_CULL_QUERY|MDL_SHADOW|MDL_DYNSHADOW))
     {
@@ -1133,4 +1133,3 @@ void setbbfrommodel(dynent *d, const char *mdl)
         d->eyeheight += zrad;
     }
 }
-

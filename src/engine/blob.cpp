@@ -3,10 +3,10 @@
 extern int intel_mapbufferrange_bug;
 
 VARNP(blobs, showblobs, 0, 1, 1);
-VARFP(blobintensity, 0, 60, 100, resetblobs());
-VARFP(blobheight, 1, 32, 128, resetblobs());
-VARFP(blobfadelow, 1, 8, 32, resetblobs());
-VARFP(blobfadehigh, 1, 8, 32, resetblobs());
+VARFP(blobintensity, 0, 50, 100, resetblobs());
+VARFP(blobheight, 1, 1, 128, resetblobs());
+VARFP(blobfadelow, 1, 16, 32, resetblobs());
+VARFP(blobfadehigh, 1, 16, 32, resetblobs());
 VARFP(blobmargin, 0, 1, 16, resetblobs());
 
 VAR(dbgblob, 0, 0, 1);
@@ -724,4 +724,3 @@ void cleanupblobs()
 {
     loopi(sizeof(blobs)/sizeof(blobs[0])) blobs[i].cleanup();
 }
-
