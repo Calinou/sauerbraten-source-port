@@ -40,6 +40,9 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Hitscan shots now emit a dynamic light at the point of impact.
 - **HUD improvements:**
   - `/hudicons 0` variable to hide icons on the HUD (defaults to `1`).
+  - `/crosshairforceadditive 1` variable to force additive blending for
+    crosshairs that contain an alpha channel (defaults to `0`). If `0`, "mix"
+    blending is used as in the vanilla game.
   - Armor count is now colored depending on the current armor type.
   - Health and ammo are now hidden in instagib modes.
   - Health is now hidden while dead.
