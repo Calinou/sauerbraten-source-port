@@ -30,7 +30,7 @@ static float cursorx = 0.5f, cursory = 0.5f;
 #define MAXCOLUMNS 16
 
 VARP(guiautotab, 6, 16, 40);
-VARP(guiclicktab, 0, 0, 1);
+VARP(guiclicktab, 0, 1, 1);
 VARP(guifadein, 0, 1, 1);
 
 struct gui : g3d_gui
@@ -1380,4 +1380,3 @@ void consolebox(int x1, int y1, int x2, int y2)
     gui::drawskin((-gui::skinx[1] + gui::skinx[2] - gui::skinx[5])*SKIN_SCALE, -gui::skiny[4]*SKIN_SCALE, int(bw), 0, 9, 1, 1, vec(1, 1, 1), 0.60f);
     pophudmatrix();
 }
-

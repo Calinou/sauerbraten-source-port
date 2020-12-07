@@ -59,6 +59,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `fov` (`100` -> `107`) - Matches 16:9 displays (equivalent to `/fov 90` on 4:3).
   - `fsaa` (`-1` -> `4`) - 4× MSAA to combat aliasing on polygon edges.
   - `fullconsize` (`75` -> `85`) - Taller full console (`saycommand` line is still visible just below).
+  - `guiclicktab` (`0` -> `1`) - Click to switch GUI tabs (instead of merely hovering them).
   - `miniconsize` (`5` -> `8`) - More chat messages on screen.
   - `minimapsize` (`8` -> `10`) - Sharper minimap.
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
