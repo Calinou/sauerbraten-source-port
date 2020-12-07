@@ -43,6 +43,9 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `/crosshairforceadditive 1` variable to force additive blending for
     crosshairs that contain an alpha channel (defaults to `0`). If `0`, "mix"
     blending is used as in the vanilla game.
+  - Teammate crosshair is now displayed on top of the main crosshair so that you
+    can still know your health status.
+  - Tweaked the teammate crosshair color to be more visible.
   - Armor count is now colored depending on the current armor type.
   - Health and ammo are now hidden in instagib modes.
   - Health is now hidden while dead.

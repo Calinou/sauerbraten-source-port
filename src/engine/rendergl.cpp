@@ -2144,6 +2144,25 @@ void drawcrosshair(int w, int h)
             crosshair = crosshairs[index];
         }
         chsize = crosshairsize*w/900.0f;
+
+        if(index == 1)
+        {
+            // draw the normal crosshair in addition to the teammate crosshair
+            // so the player can still know where they're aiming and know their health status
+            if (crosshairforceadditive) {
+                glBlendFunc(GL_ONE, GL_ONE);
+            } else if (crosshair->type&Texture::ALPHA) {
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            } else {
+                glBlendFunc(GL_ONE, GL_ONE);
+            }
+            glBindTexture(GL_TEXTURE_2D, crosshairs[0]->id);
+            hudshader->set();
+            gle::color(color);
+            float x = cx*w - (windowhit ? 0 : chsize/2.0f);
+            float y = cy*h - (windowhit ? 0 : chsize/2.0f);
+            hudquad(x, y, chsize, chsize);
+        }
     }
 
     if(crosshairforceadditive)
@@ -2164,7 +2183,15 @@ void drawcrosshair(int w, int h)
     glBindTexture(GL_TEXTURE_2D, crosshair->id);
 
     hudshader->set();
+    if(game::selectcrosshair(color) == 1)
+    {
+        // use blue color for teammate crosshair
+        gle::color(vec(0.1, 0.4, 1));
+    }
+    else
+    {
     gle::color(color);
+    }
     hudquad(x, y, chsize, chsize);
 }
 
