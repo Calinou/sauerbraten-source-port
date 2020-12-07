@@ -158,8 +158,8 @@ bool shouldinitaudio = true;
 SVARF(audiodriver, AUDIODRIVER, { shouldinitaudio = true; initwarning("sound configuration", INIT_RESET, CHANGE_SOUND); });
 VARF(usesound, 0, 1, 1, { shouldinitaudio = true; initwarning("sound configuration", INIT_RESET, CHANGE_SOUND); });
 VARF(soundchans, 1, 32, 128, initwarning("sound configuration", INIT_RESET, CHANGE_SOUND));
-VARF(soundfreq, 0, MIX_DEFAULT_FREQUENCY, 48000, initwarning("sound configuration", INIT_RESET, CHANGE_SOUND));
-VARF(soundbufferlen, 128, 1024, 4096, initwarning("sound configuration", INIT_RESET, CHANGE_SOUND));
+VARF(soundfreq, 0, 48000, 48000, initwarning("sound configuration", INIT_RESET, CHANGE_SOUND));
+VARF(soundbufferlen, 128, 768, 4096, initwarning("sound configuration", INIT_RESET, CHANGE_SOUND));
 
 bool initaudio()
 {
@@ -971,4 +971,3 @@ void updatemumble()
     mumbleinfo->top = mumblevec(vec(RAD*player->yaw, RAD*(player->pitch+90)));
 #endif
 }
-

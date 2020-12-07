@@ -41,6 +41,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - **Tweaked variable defaults:**
   - `minimapsize` (`8` -> `10`)
   - `showwaypointsradius` (`200` -> `500`)
+  - `soundbufferlen` (`1024` -> `768`)
+  - `soundfreq` (`22050` -> `48000`)
 - **Tweaked variable limits:**
   - `avatarfov` (`10..150` -> `1..179`)
   - `avatarzoomfov` (`10..60` -> `1..179`)
