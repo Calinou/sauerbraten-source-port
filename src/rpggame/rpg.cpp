@@ -110,7 +110,7 @@ namespace game
         if     (waterlevel>0) playsoundname("free/splash1", d==player1 ? NULL : &d->o);
         else if(waterlevel<0) playsoundname("free/splash2", d==player1 ? NULL : &d->o);
         if     (floorlevel>0) { if(local) playsoundname("aard/jump"); else if(d->type==ENT_AI) playsoundname("aard/jump", &d->o); }
-        else if(floorlevel<0) { if(local) playsoundname("aard/land"); else if(d->type==ENT_AI) playsoundname("aard/land", &d->o); }    
+        else if(floorlevel<0) { zif(local) playsoundname("aard/land"); else if(d->type==ENT_AI) playsoundname("aard/land", &d->o); }
     }
 
     void dynentcollide(physent *d, physent *o, const vec &dir) {}
@@ -325,4 +325,3 @@ namespace server
     bool ispaused() { return false; }
     int scaletime(int t) { return t*100; }
 }
-

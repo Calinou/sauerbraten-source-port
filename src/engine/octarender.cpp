@@ -1767,7 +1767,7 @@ void precachetextures()
 
 void allchanged(bool load)
 {
-    renderprogress(0, "clearing vertex arrays...");
+    renderprogress(0, "Clearing vertex arrays...");
     clearvas(worldroot);
     resetqueries();
     resetclipplanes();
@@ -1800,4 +1800,3 @@ void recalc()
 }
 
 COMMAND(recalc, "");
-

@@ -633,13 +633,13 @@ namespace game
             cmode->setup();
         }
 
-        conoutf(CON_GAMEINFO, "\f2game mode is %s", server::modename(gamemode));
+        conoutf(CON_GAMEINFO, "\f2Game mode is \f0%s\f2.", server::modename(gamemode));
 
         if(m_sp)
         {
             defformatstring(scorename, "bestscore_%s", getclientmap());
             const char *best = getalias(scorename);
-            if(*best) conoutf(CON_GAMEINFO, "\f2try to beat your best score so far: %s", best);
+            if(*best) conoutf(CON_GAMEINFO, "\f2Try to beat your best score so far: %s", best);
         }
         else
         {

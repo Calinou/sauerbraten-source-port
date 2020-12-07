@@ -1866,7 +1866,7 @@ void invalidatemerges(cube &c, const ivec &co, int size, bool msg)
 {
     if(msg && invalidatedmerges!=totalmillis)
     {
-        renderprogress(0, "invalidating merged surfaces...");
+        renderprogress(0, "Invalidating merged surfaces...");
         invalidatedmerges = totalmillis;
     }
     invalidatemerges(c);
@@ -1877,4 +1877,3 @@ void calcmerges()
     genmergeprogress = 0;
     genmerges();
 }
-

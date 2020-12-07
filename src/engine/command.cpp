@@ -605,15 +605,15 @@ int clampvar(ident *id, int val, int minval, int maxval)
     else if(val > maxval) val = maxval;
     else return val;
     debugcode(id->flags&IDF_HEX ?
-            (minval <= 255 ? "valid range for %s is %d..0x%X" : "valid range for %s is 0x%X..0x%X") :
-            "valid range for %s is %d..%d",
+            (minval <= 255 ? "\f2Valid range for \"%s\" is %d..0x%X (value was clamped)." : "\f2Valid range for \"%s\" is 0x%X..0x%X (value was clamped).") :
+            "\f2Valid range for \"%s\" is %d..%d (value was clamped).",
         id->name, minval, maxval);
     return val;
 }
 
 void setvarchecked(ident *id, int val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("\f3Variable \"%s\" is read-only.", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::allowedittoggle())
 #else
@@ -635,13 +635,13 @@ float clampfvar(ident *id, float val, float minval, float maxval)
     if(val < minval) val = minval;
     else if(val > maxval) val = maxval;
     else return val;
-    debugcode("valid range for %s is %s..%s", id->name, floatstr(minval), floatstr(maxval));
+    debugcode("\f3Valid range for \"%s\" is %s..%s.", id->name, floatstr(minval), floatstr(maxval));
     return val;
 }
 
 void setfvarchecked(ident *id, float val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("\f3Variable \"%s\" is read-only.", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::allowedittoggle())
 #else
@@ -660,7 +660,7 @@ void setfvarchecked(ident *id, float val)
 
 void setsvarchecked(ident *id, const char *val)
 {
-    if(id->flags&IDF_READONLY) debugcode("variable %s is read-only", id->name);
+    if(id->flags&IDF_READONLY) debugcode("\f3Variable \"%s\" is read-only.", id->name);
 #ifndef STANDALONE
     else if(!(id->flags&IDF_OVERRIDE) || identflags&IDF_OVERRIDDEN || game::allowedittoggle())
 #else
@@ -1673,7 +1673,7 @@ static const uint *runcode(const uint *code, tagval &result)
     result.setnull();
     if(rundepth >= MAXRUNDEPTH)
     {
-        debugcode("exceeded recursion limit");
+        debugcode("\f3Exceeded recursion limit.");
         return skipcode(code, result);
     }
     ++rundepth;
@@ -1831,7 +1831,7 @@ static const uint *runcode(const uint *code, tagval &result)
                         } \
                         default: freearg(arg); nval; continue; \
                     } \
-                    debugcode("unknown alias lookup: %s", arg.s); \
+                    debugcode("\f3Unknown alias lookup: %s", arg.s); \
                     freearg(arg); \
                     nval; \
                     continue; \
@@ -1844,7 +1844,7 @@ static const uint *runcode(const uint *code, tagval &result)
             case CODE_LOOKUP|RET_STR:
                 #define LOOKUP(aval) { \
                     id = identmap[op>>8]; \
-                    if(id->flags&IDF_UNKNOWN) debugcode("unknown alias lookup: %s", id->name); \
+                    if(id->flags&IDF_UNKNOWN) debugcode("\f3Unknown alias lookup: %s", id->name); \
                     aval; \
                     continue; \
                 }
@@ -2004,7 +2004,7 @@ static const uint *runcode(const uint *code, tagval &result)
                 id = identmap[op>>8];
                 if(id->flags&IDF_UNKNOWN)
                 {
-                    debugcode("unknown command: %s", id->name);
+                    debugcode("\f3Unknown command: %s", id->name);
                     goto forceresult;
                 }
                 CALLALIAS(0);
@@ -2023,7 +2023,7 @@ static const uint *runcode(const uint *code, tagval &result)
                 {
                 noid:
                     if(checknumber(args[0].s)) goto litval;
-                    debugcode("unknown command: %s", args[0].s);
+                    debugcode("\f3Unknown command: %s", args[0].s);
                     forcenull(result);
                     goto forceresult;
                 } 
@@ -3247,4 +3247,3 @@ void clearsleep_(int *clearoverrides)
 
 COMMANDN(clearsleep, clearsleep_, "i");
 #endif
-

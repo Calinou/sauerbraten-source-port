@@ -4,6 +4,7 @@
 
 - Improved coloring for player numbers in the server browser (gray = empty, yellow = almost full, red = full).
 - Colored pings in the server browser and scoreboard (greener = better).
+- Improved coloring and capitalization for console messages.
 - Strafe movement animation is now used when moving diagonally forwards.
 - Tweaked default color for bot waypoints to make them more visible.
 - Quad damage attack sound now plays continuously when firing the chaingun.

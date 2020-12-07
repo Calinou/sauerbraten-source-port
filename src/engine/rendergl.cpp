@@ -1693,7 +1693,7 @@ void drawminimap()
 {
     if(!game::needminimap()) { clearminimap(); return; }
 
-    renderprogress(0, "generating mini-map...", 0, !renderedframe);
+    renderprogress(0, "Generating minimap...", 0, !renderedframe);
 
     int size = 1<<minimapsize, sizelimit = min(hwtexsize, min(screenw, screenh));
     while(size > sizelimit) size /= 2;
@@ -2399,5 +2399,3 @@ void cleanupgl()
 
     gle::cleanup();
 }
-
-

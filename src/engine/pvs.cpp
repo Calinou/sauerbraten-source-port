@@ -1087,7 +1087,7 @@ void testpvs(int *vcsize)
     lockedpvs = w.testviewcell(o, size, &lockedwaterpvs, &len);
     loopi(MAXWATERPVS) lockedwaterplanes[i] = waterplanes[i].height;
     lockpvs = 1;
-    conoutf("generated test view cell of size %d at %.1f, %.1f, %.1f (%d B)", size, camera1->o.x, camera1->o.y, camera1->o.z, len);
+    conoutf("Generated test view cell of size %d at %.1f, %.1f, %.1f (%d B).", size, camera1->o.x, camera1->o.y, camera1->o.z, len);
 
     origpvsnodes.setsize(0);
     numwaterplanes = oldnumwaterplanes;
@@ -1100,15 +1100,15 @@ void genpvs(int *viewcellsize)
 {
     if(worldsize > 1<<15)
     {
-        conoutf(CON_ERROR, "map is too large for PVS");
+        conoutf(CON_ERROR, "Map is too large for PVS.");
         return;
     }
 
-    renderbackground("generating PVS (esc to abort)");
+    renderbackground("Generating PVS... (press Escape to abort)");
     genpvs_canceled = false;
     Uint32 start = SDL_GetTicks();
 
-    renderprogress(0, "finding view cells");
+    renderprogress(0, "Finding view cells...");
 
     clearpvs();
     calcpvsbounds();
@@ -1139,7 +1139,7 @@ void genpvs(int *viewcellsize)
     }
     else
     {
-        renderprogress(0, "creating threads");
+        renderprogress(0, "Creating threads...");
         if(!pvsmutex) pvsmutex = SDL_CreateMutex();
         if(!viewcellmutex) viewcellmutex = SDL_CreateMutex();
         loopi(numthreads)
@@ -1312,4 +1312,3 @@ void loadpvs(stream *f, int numpvs)
 }
 
 int getnumviewcells() { return pvs.length(); }
-

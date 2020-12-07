@@ -2752,7 +2752,7 @@ void initenvmaps()
 void genenvmaps()
 {
     if(envmaps.empty()) return;
-    renderprogress(0, "generating environment maps...");
+    renderprogress(0, "Generating environment maps...");
     int lastprogress = SDL_GetTicks();
     loopv(envmaps)
     {
@@ -2762,7 +2762,7 @@ void genenvmaps()
         int millis = SDL_GetTicks();
         if(millis - lastprogress >= 250)
         {
-            renderprogress(float(i+1)/envmaps.length(), "generating environment maps...", 0, true);
+            renderprogress(float(i+1)/envmaps.length(), "Generating environment maps...", 0, true);
             lastprogress = millis;
         }
     }
@@ -3624,4 +3624,3 @@ void mergenormalmaps(char *heightfile, char *normalfile) // jpg/png/tga + tga ->
 
 COMMAND(flipnormalmapy, "ss");
 COMMAND(mergenormalmaps, "ss");
-

@@ -1173,23 +1173,23 @@ int main(int argc, char **argv)
 
     if(dedicated <= 1)
     {
-        logoutf("init: sdl");
+        logoutf("Initializing: SDL");
 
         if(SDL_Init(SDL_INIT_TIMER|SDL_INIT_VIDEO|SDL_INIT_AUDIO)<0) fatal("Unable to initialize SDL: %s", SDL_GetError());
     }
     
-    logoutf("init: net");
-    if(enet_initialize()<0) fatal("Unable to initialise network module");
+    logoutf("Initializing: network");
+    if(enet_initialize()<0) fatal("Unable to initialise network module.");
     atexit(enet_deinitialize);
     enet_time_set(0);
 
-    logoutf("init: game");
+    logoutf("Initializing: game");
     game::parseoptions(gameargs);
     initserver(dedicated>0, dedicated>1);  // never returns if dedicated
     ASSERT(dedicated <= 1);
     game::initclient();
 
-    logoutf("init: video");
+    logoutf("Initializing: video");
     SDL_SetHint(SDL_HINT_GRAB_KEYBOARD, "0");
     #if !defined(WIN32) && !defined(__APPLE__)
     SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
@@ -1198,13 +1198,13 @@ int main(int argc, char **argv)
     SDL_ShowCursor(SDL_FALSE);
     SDL_StopTextInput(); // workaround for spurious text-input events getting sent on first text input toggle?
 
-    logoutf("init: gl");
+    logoutf("Initializing: OpenGL");
     gl_checkextensions();
     gl_init();
     notexture = textureload("packages/textures/notexture.png");
     if(!notexture) fatal("could not find core textures");
 
-    logoutf("init: console");
+    logoutf("Initializing: console");
     if(!execfile("data/stdlib.cfg", false)) fatal("cannot find data files (you are running from the wrong folder, try .bat file in the main folder)");   // this is the first file we load.
     if(!execfile("data/font.cfg", false)) fatal("cannot find font definitions");
     if(!setfont("default")) fatal("no default font specified");
@@ -1212,14 +1212,14 @@ int main(int argc, char **argv)
     inbetweenframes = true;
     renderbackground("initializing...");
 
-    logoutf("init: world");
+    logoutf("Initializing: world");
     camera1 = player = game::iterdynents(0);
     emptymap(0, true, NULL, false);
 
-    logoutf("init: sound");
+    logoutf("Initializing: sound");
     initsound();
 
-    logoutf("init: cfg");
+    logoutf("Initializing: configuration");
     initing = INIT_LOAD;
     execfile("data/keymap.cfg");
     execfile("data/stdedit.cfg");
@@ -1247,7 +1247,7 @@ int main(int argc, char **argv)
 
     initing = NOT_INITING;
 
-    logoutf("init: render");
+    logoutf("Initializing: renderer");
     restoregamma();
     restorevsync();
     loadshaders();
@@ -1256,13 +1256,13 @@ int main(int argc, char **argv)
 
     identflags |= IDF_PERSIST;
 
-    logoutf("init: mainloop");
+    logoutf("Initializing: main loop");
 
     if(execfile("once.cfg", false)) remove(findfile("once.cfg", "rb"));
 
     if(load)
     {
-        logoutf("init: localconnect");
+        logoutf("Initializing: localconnect");
         //localconnect();
         game::changemap(load);
     }

@@ -880,7 +880,7 @@ bool save_world(const char *mname, bool nolms)
     setmapfilenames(mname);
     if(savebak) backup(ogzname, bakname);
     stream *f = opengzfile(ogzname, "wb");
-    if(!f) { conoutf(CON_WARN, "could not write map to %s", ogzname); return false; }
+    if(!f) { conoutf(CON_WARN, "Could not write map to %s.", ogzname); return false; }
 
     int numvslots = vslots.length();
     if(!nolms && !multiplayer(false))
@@ -890,7 +890,7 @@ bool save_world(const char *mname, bool nolms)
     }
 
     savemapprogress = 0;
-    renderprogress(0, "saving map...");
+    renderprogress(0, "Saving map...");
 
     octaheader hdr;
     memcpy(hdr.magic, "OCTA", 4);
@@ -967,12 +967,12 @@ bool save_world(const char *mname, bool nolms)
 
     savevslots(f, numvslots);
 
-    renderprogress(0, "saving octree...");
+    renderprogress(0, "Saving octree...");
     savec(worldroot, ivec(0, 0, 0), worldsize>>1, f, nolms);
 
     if(!nolms) 
     {
-        if(lightmaps.length()) renderprogress(0, "saving lightmaps...");
+        if(lightmaps.length()) renderprogress(0, "Saving lightmaps...");
         loopv(lightmaps)
         {
             LightMap &lm = lightmaps[i];
@@ -983,11 +983,11 @@ bool save_world(const char *mname, bool nolms)
                 f->putlil<ushort>(ushort(lm.unlity));
             }
             f->write(lm.data, lm.bpp*LM_PACKW*LM_PACKH);
-            renderprogress(float(i+1)/lightmaps.length(), "saving lightmaps...");
+            renderprogress(float(i+1)/lightmaps.length(), "Saving lightmaps...");
         }
-        if(getnumviewcells()>0) { renderprogress(0, "saving pvs..."); savepvs(f); }
+        if(getnumviewcells()>0) { renderprogress(0, "Saving PVS..."); savepvs(f); }
     }
-    if(shouldsaveblendmap()) { renderprogress(0, "saving blendmap..."); saveblendmap(f); }
+    if(shouldsaveblendmap()) { renderprogress(0, "Saving blendmap..."); saveblendmap(f); }
 
     delete f;
     conoutf("wrote map file %s", ogzname);
@@ -1004,28 +1004,28 @@ bool load_world(const char *mname, const char *cname)        // still supports a
     int loadingstart = SDL_GetTicks();
     setmapfilenames(mname, cname);
     stream *f = opengzfile(ogzname, "rb");
-    if(!f) { conoutf(CON_ERROR, "could not read map %s", ogzname); return false; }
+    if(!f) { conoutf(CON_ERROR, "Could not read map %s.", ogzname); return false; }
     octaheader hdr;
-    if(f->read(&hdr, 7*sizeof(int)) != 7*sizeof(int)) { conoutf(CON_ERROR, "map %s has malformatted header", ogzname); delete f; return false; }
+    if(f->read(&hdr, 7*sizeof(int)) != 7*sizeof(int)) { conoutf(CON_ERROR, "Map %s has malformatted header.", ogzname); delete f; return false; }
     lilswap(&hdr.version, 6);
-    if(memcmp(hdr.magic, "OCTA", 4) || hdr.worldsize <= 0|| hdr.numents < 0) { conoutf(CON_ERROR, "map %s has malformatted header", ogzname); delete f; return false; }
-    if(hdr.version>MAPVERSION) { conoutf(CON_ERROR, "map %s requires a newer version of Cube 2: Sauerbraten", ogzname); delete f; return false; }
+    if(memcmp(hdr.magic, "OCTA", 4) || hdr.worldsize <= 0|| hdr.numents < 0) { conoutf(CON_ERROR, "Map %s has malformatted header.", ogzname); delete f; return false; }
+    if(hdr.version>MAPVERSION) { conoutf(CON_ERROR, "Map %s requires a newer version of Cube 2: Sauerbraten.", ogzname); delete f; return false; }
     compatheader chdr;
     if(hdr.version <= 28)
     {
-        if(f->read(&chdr.lightprecision, sizeof(chdr) - 7*sizeof(int)) != sizeof(chdr) - 7*sizeof(int)) { conoutf(CON_ERROR, "map %s has malformatted header", ogzname); delete f; return false; }
+        if(f->read(&chdr.lightprecision, sizeof(chdr) - 7*sizeof(int)) != sizeof(chdr) - 7*sizeof(int)) { conoutf(CON_ERROR, "Map %s has malformatted header.", ogzname); delete f; return false; }
     }
     else 
     {
         int extra = 0;
         if(hdr.version <= 29) extra++; 
-        if(f->read(&hdr.blendmap, sizeof(hdr) - (7+extra)*sizeof(int)) != sizeof(hdr) - (7+extra)*sizeof(int)) { conoutf(CON_ERROR, "map %s has malformatted header", ogzname); delete f; return false; }
+        if(f->read(&hdr.blendmap, sizeof(hdr) - (7+extra)*sizeof(int)) != sizeof(hdr) - (7+extra)*sizeof(int)) { conoutf(CON_ERROR, "Map %s has malformatted header.", ogzname); delete f; return false; }
     }
 
     resetmap();
 
     Texture *mapshot = textureload(picname, 3, true, false);
-    renderbackground("loading...", mapshot, mname, game::getmapinfo());
+    renderbackground("Loading...", mapshot, mname, game::getmapinfo());
 
     game::loadingmap(cname ? cname : mname);
 
@@ -1062,7 +1062,7 @@ bool load_world(const char *mname, const char *cname)        // still supports a
         else lilswap(&hdr.numvslots, 1);
     }
 
-    renderprogress(0, "clearing world...");
+    renderprogress(0, "Clearing world...");
 
     freeocta(worldroot);
     worldroot = NULL;
@@ -1072,7 +1072,7 @@ bool load_world(const char *mname, const char *cname)        // still supports a
     setvar("mapsize", 1<<worldscale, true, false);
     setvar("mapscale", worldscale, true, false);
 
-    renderprogress(0, "loading vars...");
+    renderprogress(0, "Loading vars...");
  
     loopi(hdr.numvars)
     {
@@ -1152,7 +1152,7 @@ bool load_world(const char *mname, const char *cname)        // still supports a
         loopi(nummru) texmru.add(f->getlil<ushort>());
     }
 
-    renderprogress(0, "loading entities...");
+    renderprogress(0, "Loading entities...");
 
     vector<extentity *> &ents = entities::getents();
     int einfosize = entities::extraentinfosize();
@@ -1201,22 +1201,22 @@ bool load_world(const char *mname, const char *cname)        // still supports a
         f->seek((hdr.numents-MAXENTS)*(samegame ? sizeof(entity) + einfosize : eif), SEEK_CUR);
     }
 
-    renderprogress(0, "loading slots...");
+    renderprogress(0, "Loading slots...");
     loadvslots(f, hdr.numvslots);
 
-    renderprogress(0, "loading octree...");
+    renderprogress(0, "Loading octree...");
     bool failed = false;
     worldroot = loadchildren(f, ivec(0, 0, 0), hdr.worldsize>>1, failed);
-    if(failed) conoutf(CON_ERROR, "garbage in map");
+    if(failed) conoutf(CON_ERROR, "Garbage in map.");
 
-    renderprogress(0, "validating...");
+    renderprogress(0, "Validating...");
     validatec(worldroot, hdr.worldsize>>1);
 
     if(!failed)
     {
         if(hdr.version >= 7) loopi(hdr.lightmaps)
         {
-            renderprogress(i/(float)hdr.lightmaps, "loading lightmaps...");
+            renderprogress(i/(float)hdr.lightmaps, "Loading lightmaps...");
             LightMap &lm = lightmaps.add();
             if(hdr.version >= 17)
             {
@@ -1241,7 +1241,7 @@ bool load_world(const char *mname, const char *cname)        // still supports a
     mapcrc = f->getcrc();
     delete f;
 
-    conoutf("read map %s (%.1f seconds)", ogzname, (SDL_GetTicks()-loadingstart)/1000.0f);
+    conoutf("Read map %s (%.1f seconds).", ogzname, (SDL_GetTicks()-loadingstart)/1000.0f);
 
     clearmainmenu();
 
@@ -1385,4 +1385,3 @@ void writeobj(char *name)
 COMMAND(writeobj, "s"); 
 
 #endif
-
