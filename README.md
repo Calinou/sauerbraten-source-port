@@ -32,6 +32,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - **Improved particle effects:**
   - Players landing from a high jump now create a smoke puff.
   - Entering and leaving water/lava now creates splash particles.
+  - Teleports and teledests nwo emit blue sparks when used.
+  - Jumppads now emit green sparks when used.
 - **Improved dynamic light effects:**
   - Teleports and teledests now emit a blue dynamic light when used.
   - Jumppads now emit a green dynamic light when used.

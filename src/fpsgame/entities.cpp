@@ -214,6 +214,8 @@ namespace entities
 
                 adddynlight(e.o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
                 adddynlight(ents[td]->o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                particle_splash(PART_SPARK, 60, 200, e.o, 0x80bbff, 0.75f, 500, -1);
+                particle_splash(PART_SPARK, 60, 200, ents[td]->o, 0x80bbff, 0.75f, 500, -1);
             }
         }
         if(local && d->clientnum >= 0)
@@ -241,6 +243,7 @@ namespace entities
                 playsound(snd, d == followingplayer(player1) ? NULL : &e.o, NULL, flags);
 
                 adddynlight(e.o, 16, vec(0.4f, 1.0f, 0.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                particle_splash(PART_SPARK, 60, 200, e.o, 0x80ff80, 0.75f, 250, -1);
             }
         }
         if(local && d->clientnum >= 0)
