@@ -352,8 +352,8 @@ struct ctfclientmode : clientmode
         loopv(flags) if(flags[i].dropper == ci->clientnum) { flags[i].dropper = -1; flags[i].dropcount = 0; }
     }
 
-    bool canspawn(clientinfo *ci, bool connecting) 
-    { 
+    bool canspawn(clientinfo *ci, bool connecting)
+    {
         return m_efficiency || !m_protect ? connecting || !ci->state.lastdeath || gamemillis+curtime-ci->state.lastdeath >= RESPAWNSECS*1000 : true;
     }
 
@@ -612,7 +612,24 @@ struct ctfclientmode : clientmode
                 hudmatrix.scale(2, 2, 1);
                 flushhudmatrix();
                 bool flash = wait>0 && d==player1 && lastspawnattempt>=d->lastpain && lastmillis < lastspawnattempt+100;
-                draw_textf("%s%d", (x+s/2)/2-(wait>=10 ? 28 : 16), (y+s/2)/2-32, flash ? "\f3" : "", wait);
+
+                const char *waitcolor;
+                if(wait == 0)
+                {
+                    // Can respawn.
+                    waitcolor = "\f0";
+                }
+                else if(flash)
+                {
+                    // Tried to respawn too early.
+                    waitcolor = "\f3";
+                }
+                else
+                {
+                    waitcolor = "";
+                }
+
+                draw_textf("%s%d", (x+s/2)/2-(wait>=10 ? 28 : 16), (y+s/2)/2-32, waitcolor, wait);
                 pophudmatrix();
             }
         }
@@ -1350,4 +1367,3 @@ case N_INVISFLAG:
 }
 
 #endif
-

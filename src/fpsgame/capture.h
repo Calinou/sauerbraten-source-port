@@ -508,7 +508,24 @@ struct captureclientmode : clientmode
                 hudmatrix.scale(2, 2, 1);
                 flushhudmatrix();
                 bool flash = wait>0 && d==player1 && lastspawnattempt>=d->lastpain && lastmillis < lastspawnattempt+100;
-                draw_textf("%s%d", (x+s/2)/2-(wait>=10 ? 28 : 16), (y+s/2)/2-32, flash ? "\f3" : "", wait);
+
+                const char *waitcolor;
+                if(wait == 0)
+                {
+                    // Can respawn.
+                    waitcolor = "\f0";
+                }
+                else if(flash)
+                {
+                    // Tried to respawn too early.
+                    waitcolor = "\f3";
+                }
+                else
+                {
+                    waitcolor = "";
+                }
+
+                draw_textf("%s%d", (x+s/2)/2-(wait>=10 ? 28 : 16), (y+s/2)/2-32, waitcolor, wait);
                 pophudmatrix();
             }
         }
@@ -717,8 +734,8 @@ ICOMMAND(insidebases, "", (),
     }
     buf.add('\0');
     result(buf.getbuf());
-}); 
-    
+});
+
 #else
     bool notgotbases;
 
@@ -744,7 +761,7 @@ ICOMMAND(insidebases, "", (),
             entity &e = ments[i];
             if(e.type != BASE) continue;
             int ammotype = e.attr1;
-            addbase(ammotype, e.o); 
+            addbase(ammotype, e.o);
         }
         notgotbases = false;
         sendbases();
@@ -1107,5 +1124,3 @@ case N_REPAMMO:
 }
 
 #endif
-
-
