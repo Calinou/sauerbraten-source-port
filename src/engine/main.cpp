@@ -98,7 +98,7 @@ SDL_GLContext glcontext = NULL;
 #define SCR_DEFAULTH 768
 VARF(scr_w, SCR_MINW, -1, SCR_MAXW, initwarning("screen resolution"));
 VARF(scr_h, SCR_MINH, -1, SCR_MAXH, initwarning("screen resolution"));
-VARF(depthbits, 0, 0, 32, initwarning("depth-buffer precision"));
+VARF(depthbits, 0, 24, 32, initwarning("depth-buffer precision"));
 VARF(fsaa, -1, -1, 16, initwarning("anti-aliasing"));
 
 void writeinitcfg()

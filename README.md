@@ -39,17 +39,18 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Game clock now becomes red (instead of yellow) when there is less than 1
     minute left, and yellow when there are less than 3 minutes left.
 - **Tweaked variable defaults:**
-  - `minimapsize` (`8` -> `10`)
-  - `showwaypointsradius` (`200` -> `500`)
-  - `soundbufferlen` (`1024` -> `768`)
-  - `soundfreq` (`22050` -> `48000`)
+  - `depthbits`  (`0` -< `24`) - Fixes Z-fighting in large maps on Intel IGPs.
+  - `minimapsize` (`8` -> `10`) - Sharper minimap.
+  - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
+  - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
+  - `soundfreq` (`22050` -> `48000`) - Improved sound quality.
 - **Tweaked variable limits:**
-  - `avatarfov` (`10..150` -> `1..179`)
-  - `avatarzoomfov` (`10..60` -> `1..179`)
-  - `fov` (`10..150` -> `1..179`)
-  - `minimapsize` (`7..10` -> `7..11`)
-  - `shadowmapsize` (`7..11` -> `7..12`)
-  - `zoomfov` (`10..60` -> `1..179`)
+  - `avatarfov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
+  - `avatarzoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
+  - `fov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
+  - `minimapsize` (`7..10` -> `7..11`) - Even sharper minimap.
+  - `shadowmapsize` (`7..11` -> `7..12`) - Sharper/better-looking shadowmaps.
+  - `zoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
 
 ## Installation
 
