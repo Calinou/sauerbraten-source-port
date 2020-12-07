@@ -1186,8 +1186,12 @@ namespace game
 
         if(!editmode && !m_insta)
         {
-            if(d->health<=25) color = vec(1, 0, 0);
-            else if(d->health<=50) color = vec(1, 0.5f, 0);
+            // color crosshair depending on health
+            if(d->health<=20) color = vec(1, 0, 0);
+            else if(d->health<=65) color = vec(1, (d->health-20)/45.0f, 0);
+            else if(d->health<=100) color = vec(1, 1, (d->health-60)/35.0f);
+            else if(d->health<=200) color = vec((200-d->health)/100.0f, 1, (200-d->health)/100.0f);
+            else color = vec(0, 1, 0);
         }
         if(d->gunwait) color.mul(0.5f);
         return crosshair;

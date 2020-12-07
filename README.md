@@ -43,6 +43,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `/crosshairforceadditive 1` variable to force additive blending for
     crosshairs that contain an alpha channel (defaults to `0`). If `0`, "mix"
     blending is used as in the vanilla game.
+  - Crosshair health is now a smooth gradient (red-yellow-white). The crosshair
+    will also progressively become greener if your health goes above 100.
   - Teammate crosshair is now displayed on top of the main crosshair so that you
     can still know your health status.
   - Tweaked the teammate crosshair color to be more visible.
