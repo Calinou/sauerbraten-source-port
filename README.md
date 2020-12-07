@@ -48,8 +48,11 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Game clock now becomes red (instead of yellow) when there is less than 1
     minute left, and yellow when there are less than 3 minutes left.
 - **Tweaked variable defaults:**
+  - `aniso` (`0` -> `16`) - 16× anisotropic filtering to make textures look
+    better when viewed at oblique angles.
   - `conscale` (`0.33` -> `0.42`) - Larger console text.
   - `depthbits` (`0` -> `24`) - Fixes Z-fighting in large maps on Intel IGPs.
+  - `fsaa` (`-1` -> `4`) - 4× MSAA to combat aliasing on polygon edges.
   - `minimapsize` (`8` -> `10`) - Sharper minimap.
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
   - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
