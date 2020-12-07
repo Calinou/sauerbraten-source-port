@@ -62,12 +62,12 @@ int rendercommand(int x, int y, int w)
     return height;
 }
 
-VARP(consize, 0, 5, 100);
-VARP(miniconsize, 0, 5, 100);
+VARP(consize, 0, 7, 100);
+VARP(miniconsize, 0, 8, 100);
 VARP(miniconwidth, 0, 40, 100);
 VARP(confade, 0, 30, 60);
 VARP(miniconfade, 0, 30, 60);
-VARP(fullconsize, 0, 75, 100);
+VARP(fullconsize, 0, 85, 100);
 HVARP(confilter, 0, 0x7FFFFFF, 0x7FFFFFF);
 HVARP(fullconfilter, 0, 0x7FFFFFF, 0x7FFFFFF);
 HVARP(miniconfilter, 0, 0, 0x7FFFFFF);
@@ -782,4 +782,3 @@ void writecompletions(stream *f)
         else f->printf("%s %s %s %s\n", v->type==FILES_VAR ? "varcomplete" : "complete", escapeid(k), escapestring(v->dir), escapestring(v->ext ? v->ext : "*"));
     }
 }
-

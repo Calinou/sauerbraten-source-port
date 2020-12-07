@@ -51,9 +51,12 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `aniso` (`0` -> `16`) - 16× anisotropic filtering to make textures look
     better when viewed at oblique angles.
   - `conscale` (`0.33` -> `0.42`) - Larger console text.
+  - `consize` (`5` -> `7`) - More console messages on screen.
   - `depthbits` (`0` -> `24`) - Fixes Z-fighting in large maps on Intel IGPs.
   - `fov` (`100` -> `107`) - Matches 16:9 displays (equivalent to `/fov 90` on 4:3).
   - `fsaa` (`-1` -> `4`) - 4× MSAA to combat aliasing on polygon edges.
+  - `fullconsize` (`75` -> `85`) - Taller full console (`saycommand` line is still visible just below).
+  - `miniconsize` (`5` -> `8`) - More chat messages on screen.
   - `minimapsize` (`8` -> `10`) - Sharper minimap.
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
   - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
