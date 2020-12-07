@@ -6,6 +6,7 @@
 - Colored pings in the server browser and scoreboard (greener = better).
 - Strafe movement animation is now used when moving diagonally forwards.
 - Tweaked default color for bot waypoints to make them more visible.
+- Quad damage attack sound now plays continuously when firing the chaingun.
 - Customizable color for bot waypoints (e.g. `/showwaypointscolour 0xffffff`).
 - Customizable weapon trail colours (`/rockettrailcolour`, `/rifletrailcolour`, `/grenadetrailcolour`).
 - `positionpacketdelay` and `disableenetlimits` variables ported from

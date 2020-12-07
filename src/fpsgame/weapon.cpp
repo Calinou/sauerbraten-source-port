@@ -695,7 +695,7 @@ namespace game
                 playsound(sound, d==h ? NULL : &d->o);
                 break;
         }
-        if(d->quadmillis && lastmillis-prevaction>200 && !looped) playsound(S_ITEMPUP, d==h ? NULL : &d->o);
+        if(d->quadmillis && lastmillis-prevaction>50 && !looped) playsound(S_ITEMPUP, d==h ? NULL : &d->o);
     }
 
     void particletrack(physent *owner, vec &o, vec &d)
