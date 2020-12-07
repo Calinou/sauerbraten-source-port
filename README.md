@@ -66,3 +66,11 @@ sources to run it.
 - Compile a client and server binary. On Linux, enter `make -C src install` in a terminal while in
   the root folder of the cloned repository.
 - Run the game by entering `./auerbraten_unix` in the root folder.
+
+## License
+
+Copyright © 2001-2020 Wouter van Oortmerssen, Lee Salzman, Mike Dysart, Robert Pointon, and Quinton Reeves
+
+Mod changes © 2020 Hugo Locurcio (see Git history)
+
+Licensed under the Zlib license, see [LICENSE.txt](LICENSE.txt) for details.
