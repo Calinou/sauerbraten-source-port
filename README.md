@@ -48,7 +48,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Game clock now becomes red (instead of yellow) when there is less than 1
     minute left, and yellow when there are less than 3 minutes left.
 - **Tweaked variable defaults:**
-  - `depthbits`  (`0` -< `24`) - Fixes Z-fighting in large maps on Intel IGPs.
+  - `conscale` (`0.33` -> `0.42`) - Larger console text.
+  - `depthbits` (`0` -> `24`) - Fixes Z-fighting in large maps on Intel IGPs.
   - `minimapsize` (`8` -> `10`) - Sharper minimap.
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
   - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
@@ -56,6 +57,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - **Tweaked variable limits:**
   - `avatarfov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
   - `avatarzoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
+  - `conscale` (`0.001..1000.0` -> `0.3..2.0`) - Prevents the console from
+    becoming unusable due to extremely low or high values.
   - `fov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
   - `minimapsize` (`7..10` -> `7..11`) - Even sharper minimap.
   - `shadowmapsize` (`7..11` -> `7..12`) - Sharper/better-looking shadowmaps.

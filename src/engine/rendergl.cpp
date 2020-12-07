@@ -2166,7 +2166,7 @@ VARP(showfpsrange, 0, 0, 1);
 VAR(showeditstats, 0, 0, 1);
 VAR(statrate, 1, 200, 1000);
 
-FVARP(conscale, 1e-3f, 0.33f, 1e3f);
+FVARP(conscale, 0.3f, 0.42f, 2.0f);
 
 void gl_drawhud()
 {
