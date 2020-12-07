@@ -635,7 +635,7 @@ float clampfvar(ident *id, float val, float minval, float maxval)
     if(val < minval) val = minval;
     else if(val > maxval) val = maxval;
     else return val;
-    debugcode("\f3Valid range for \"%s\" is %s..%s.", id->name, floatstr(minval), floatstr(maxval));
+    debugcode("\f2Valid range for \"%s\" is %s..%s (value was clamped).", id->name, floatstr(minval), floatstr(maxval));
     return val;
 }
 
