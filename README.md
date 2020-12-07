@@ -22,6 +22,11 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - `positionpacketdelay` and `disableenetlimits` variables ported from
   [sauer-sdl2](https://github.com/extra-a/sauer-sdl2).
   Both are set to values optimized for responsive, jitter-free gameplay by default.
+- **Improved hudgun swaying:**
+  - Slightly decreased overall swaying speed.
+  - Increased swaying speed when moving forward/backward to compensate.
+  - Subtle swaying is now applied when not moving to make the player feel more alive.
+  - The `/swayside`, `/swaystep` and `/swayup` variables are now persistent.
 - **Improved particle effects:**
   - Players landing from a high jump now create a smoke puff.
   - Entering and leaving water/lava now creates splash particles.
