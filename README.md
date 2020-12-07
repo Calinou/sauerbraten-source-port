@@ -12,6 +12,9 @@
 - `positionpacketdelay` and `disableenetlimits` variables ported from
   [sauer-sdl2](https://github.com/extra-a/sauer-sdl2).
   Both are set to values optimized for responsive, jitter-free gameplay by default.
+- **Improved particle effects:**
+  - Players landing from a high jump now create a smoke puff.
+  - Entering and leaving water/lava now creates splash particles.
 - **Improved dynamic light effects:**
   - Teleports and teledests now emit a blue dynamic light when used.
   - Jumppads now emit a green dynamic light when used.
