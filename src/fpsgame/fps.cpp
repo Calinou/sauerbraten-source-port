@@ -919,6 +919,7 @@ namespace game
                     armorcolor = "\f0";
                     break;
                 case A_BLUE:
+                default:
                     armorcolor = "\f1";
                     break;
             }
