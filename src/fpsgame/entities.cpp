@@ -197,6 +197,8 @@ namespace entities
         }
     }
 
+    VARP(teleportvfx, 0, 1, 1);
+
     // these functions are called when the client touches the item
 
     void teleporteffects(fpsent *d, int tp, int td, bool local)
@@ -212,10 +214,14 @@ namespace entities
                 playsound(snd, d==h ? NULL : &e.o, NULL, flags);
                 if(d!=h && ents.inrange(td) && ents[td]->type == TELEDEST) playsound(snd, &ents[td]->o, NULL, flags);
 
-                adddynlight(e.o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
-                adddynlight(ents[td]->o, 16, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
-                particle_splash(PART_SPARK, 60, 200, e.o, 0x80bbff, 0.75f, 500, -1);
-                particle_splash(PART_SPARK, 60, 200, ents[td]->o, 0x80bbff, 0.75f, 500, -1);
+                if(teleportvfx)
+                {
+                    // add particles and lights to both the teleport and teledest origin
+                    adddynlight(e.o, 18, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                    adddynlight(ents[td]->o, 18, vec(0.4f, 0.7f, 1.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                    particle_splash(PART_SPARK, 60, 200, e.o, 0x80bbff, 0.75f, 500, -1);
+                    particle_splash(PART_SPARK, 60, 200, ents[td]->o, 0x80bbff, 0.75f, 500, -1);
+                }
             }
         }
         if(local && d->clientnum >= 0)
@@ -231,6 +237,8 @@ namespace entities
         }
     }
 
+    VARP(jumppadvfx, 0, 1, 1);
+
     void jumppadeffects(fpsent *d, int jp, bool local)
     {
         if(ents.inrange(jp) && ents[jp]->type == JUMPPAD)
@@ -242,8 +250,12 @@ namespace entities
                 if(e.attr4 > 0) { snd = e.attr4; flags = SND_MAP; }
                 playsound(snd, d == followingplayer(player1) ? NULL : &e.o, NULL, flags);
 
-                adddynlight(e.o, 16, vec(0.4f, 1.0f, 0.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
-                particle_splash(PART_SPARK, 60, 200, e.o, 0x80ff80, 0.75f, 250, -1);
+                if(jumppadvfx)
+                {
+                    // add particle and light to the jumppad origin
+                    adddynlight(e.o, 18, vec(0.4f, 1.0f, 0.4f), 100, 100, DL_FLASH, 0, vec(0, 0, 0));
+                    particle_splash(PART_SPARK, 60, 200, e.o, 0x80ff80, 0.75f, 250, -1);
+                }
             }
         }
         if(local && d->clientnum >= 0)

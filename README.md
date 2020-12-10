@@ -30,14 +30,14 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Subtle swaying is now applied when not moving to make the player feel more alive.
   - The `/swayside`, `/swaystep` and `/swayup` variables are now persistent.
 - **Improved particle effects:**
-  - Players landing from a high jump now create a smoke puff.
-  - Entering and leaving water/lava now creates splash particles.
-  - Teleports and teledests nwo emit blue sparks when used.
-  - Jumppads now emit green sparks when used.
+  - Players landing from a high jump now create a smoke puff (`/landingvfx 0` to disable).
+  - Entering and leaving water/lava now creates splash particles (`/liquidvfx 0` to disable).
+  - Teleports and teledests nwo emit blue sparks when used (`/teleportvfx 0` to disable).
+  - Jumppads now emit green sparks when used (`/jumppadvfx 0` to disable).
 - **Improved dynamic light effects:**
-  - Teleports and teledests now emit a blue dynamic light when used.
-  - Jumppads now emit a green dynamic light when used.
-  - Hitscan shots now emit a dynamic light at the point of impact.
+  - Teleports and teledests now emit a blue dynamic light when used (`/teleportvfx 0` to disable).
+  - Jumppads now emit a green dynamic light when used (`/jumppadvfx 0` to disable).
+  - Hitscan shots now emit a dynamic light at the point of impact (`/hitscanlight 0` to disable).
 - **HUD improvements:**
   - `/hudicons 0` variable to hide icons on the HUD (defaults to `1`).
   - `/crosshairforceadditive 1` variable to force additive blending for

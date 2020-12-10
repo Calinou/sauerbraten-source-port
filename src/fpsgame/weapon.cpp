@@ -592,6 +592,7 @@ namespace game
 
     VARP(muzzleflash, 0, 1, 1);
     VARP(muzzlelight, 0, 1, 1);
+    VARP(hitscanlight, 0, 1, 1);
     HVARP(rifletrailcolour, 0, 0x404040, 0xFFFFFF);
 
     void shoteffects(int gun, const vec &from, const vec &to, fpsent *d, bool local, int id, int prevaction)     // create visual effect from a shot
@@ -616,10 +617,13 @@ namespace game
                 }
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), 30, vec(0.5f, 0.375f, 0.25f), 100, 100, DL_FLASH, 0, vec(0, 0, 0), d);
 
-                // add hitscan projectile impact effect
-                // change effect radius depending on shot distance to simulate a large area of effect
-                const vec dir = vec(from).sub(to).safenormalize();
-                adddynlight(vec(to).madd(dir, 4), min(40.0, vec(from).dist(to) * 0.15), vec(0.5f, 0.375f, 0.25f), 225, 0);
+                if(hitscanlight)
+                {
+                    // add hitscan projectile impact effect
+                    // change effect radius depending on shot distance to simulate a large area of effect
+                    const vec dir = vec(from).sub(to).safenormalize();
+                    adddynlight(vec(to).madd(dir, 4), min(40.0, vec(from).dist(to) * 0.15), vec(0.5f, 0.375f, 0.25f), 225, 0);
+                }
 
                 break;
             }
@@ -634,9 +638,12 @@ namespace game
                 if(!local) adddecal(DECAL_BULLET, to, vec(from).sub(to).safenormalize(), 2.0f);
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), gun==GUN_CG ? 30 : 15, vec(0.5f, 0.375f, 0.25f), gun==GUN_CG ? 50 : 100, gun==GUN_CG ? 50 : 100, DL_FLASH, 0, vec(0, 0, 0), d);
 
-                // add hitscan projectile impact effect
-                const vec dir = vec(from).sub(to).safenormalize();
-                adddynlight(vec(to).madd(dir, 4), 6, vec(0.5f, 0.375f, 0.25f), 225, 0);
+                if(hitscanlight)
+                {
+                    // add hitscan projectile impact effect
+                    const vec dir = vec(from).sub(to).safenormalize();
+                    adddynlight(vec(to).madd(dir, 4), 6, vec(0.5f, 0.375f, 0.25f), 225, 0);
+                }
 
                 break;
             }
@@ -672,10 +679,13 @@ namespace game
                 if(!local) adddecal(DECAL_BULLET, to, vec(from).sub(to).safenormalize(), 3.0f);
                 if(muzzlelight) adddynlight(hudgunorigin(gun, d->o, to, d), 25, vec(0.5f, 0.375f, 0.25f), 75, 75, DL_FLASH, 0, vec(0, 0, 0), d);
 
-                // add hitscan projectile impact effect
-                // larger radius than pistol/CG as the rifle is more powerful
-                const vec dir = vec(from).sub(to).safenormalize();
-                adddynlight(vec(to).madd(dir, 4), 8, vec(0.5f, 0.375f, 0.25f), 225, 0);
+                if(hitscanlight)
+                {
+                    // add hitscan projectile impact effect
+                    // larger radius than pistol/CG as the rifle is more powerful
+                    const vec dir = vec(from).sub(to).safenormalize();
+                    adddynlight(vec(to).madd(dir, 4), 8, vec(0.5f, 0.375f, 0.25f), 225, 0);
+                }
 
                 break;
         }

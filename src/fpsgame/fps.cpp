@@ -685,6 +685,9 @@ namespace game
         return server::modename(gamemode, NULL);
     }
 
+    VARP(liquidvfx, 0, 1, 1);
+    VARP(landingvfx, 0, 1, 1);
+
     void physicstrigger(physent *d, bool local, int floorlevel, int waterlevel, int material)
     {
         if(d->type==ENT_INANIMATE) return;
@@ -694,14 +697,20 @@ namespace game
             if(material!=MAT_LAVA)
             {
                 playsound(S_SPLASH1, d==player1 ? NULL : &d->o);
-                particle_splash(PART_SPARK, 100, 250, vec(d->o).subz(2), 0x305070, 0.3f);
+                if(liquidvfx)
+                {
+                    particle_splash(PART_SPARK, 100, 250, vec(d->o).subz(2), 0x305070, 0.3f);
+                }
             }
         }
         else if(waterlevel<0)
         {
             // entering water/lava
             playsound(material==MAT_LAVA ? S_BURN : S_SPLASH2, d==player1 ? NULL : &d->o);
-            particle_splash(PART_SPARK, material==MAT_LAVA ? 400 : 100, 250, vec(d->o).subz(2), material==MAT_LAVA ? 0xFF8000 : 0x305070, 0.3f);
+            if(liquidvfx)
+            {
+                particle_splash(PART_SPARK, material==MAT_LAVA ? 400 : 100, 250, vec(d->o).subz(2), material==MAT_LAVA ? 0xFF8000 : 0x305070, 0.3f);
+            }
         }
 
         if(floorlevel>0)
@@ -719,8 +728,11 @@ namespace game
             if(d==player1 || d->type!=ENT_PLAYER || ((fpsent *)d)->ai)
             {
                 msgsound(S_LAND, d);
-                // move down particles towards player's feet
-                particle_splash(PART_SPARK, 40, 125, vec(d->o).subz(14), 0x2b2b2b, 0.5f, 500, -1);
+                if(landingvfx)
+                {
+                    // move down particles towards player's feet
+                    particle_splash(PART_SPARK, 40, 125, vec(d->o).subz(14), 0x2b2b2b, 0.5f, 500, -1);
+                }
             }
         }
     }
