@@ -230,6 +230,7 @@ static void text_color(char c, char *stack, int size, int &sp, bvec color, int a
             case '6': color = bvec(255, 128,   0); break;   // orange
             case '7': color = bvec(255, 255, 255); break;   // white
             case '8': color = bvec( 96, 240, 255); break;   // cyan
+            case '9': color = bvec(210, 210, 210); break;   // light gray
             // provided color: everything else
         }
         gle::color(color, a);
@@ -389,4 +390,3 @@ void reloadfonts()
         loopv(f.texs) if(!reloadtexture(*f.texs[i])) fatal("failed to reload font texture");
     );
 }
-

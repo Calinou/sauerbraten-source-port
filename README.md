@@ -14,6 +14,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
   yellow = almost full, red = full).
 - Colored pings in the server browser and scoreboard (greener = better).
 - Improved coloring and capitalization for console messages.
+- New `^f9` console color code (light gray).
 - Strafe movement animation is now used when moving diagonally forwards.
 - Tweaked default color for bot waypoints to make them more visible.
 - Quad damage attack sound now plays continuously when firing the chaingun.
@@ -58,6 +59,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
     now blink faster for easier recognition and following.
   - Game clock now becomes red (instead of yellow) when there is less than 1
     minute left, and yellow when there are less than 3 minutes left.
+  - Own chat messages (standard and team) are now displayed in light gray to
+    be easier to distinguish from other players' messages.
 - **Tweaked variable defaults:**
   - `aniso` (`0` -> `16`) - 16× anisotropic filtering to make textures look
     better when viewed at oblique angles.
