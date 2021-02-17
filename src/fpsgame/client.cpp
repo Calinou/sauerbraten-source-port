@@ -1258,6 +1258,8 @@ namespace game
 
     extern int deathscore;
 
+    SVARP(chathighlightname, "");
+
     void parsemessages(int cn, fpsent *d, ucharbuf &p)
     {
         static char text[MAXTRANS];
@@ -1341,7 +1343,16 @@ namespace game
                 if(isignored(d->clientnum)) break;
                 if(d->state!=CS_DEAD && d->state!=CS_SPECTATOR)
                     particle_textcopy(d->abovehead(), text, PART_TEXT, 2000, 0x32FF64, 4.0f, -8);
-                conoutf(CON_CHAT, "%s:\f0 %s", chatcolorname(d), text);
+                if(strcasestr(text, player1->name) || (strlen(chathighlightname) >= 1 && strcasestr(text, chathighlightname)))
+                {
+                    // Highlight chat message. Also highlight the colon to be more visible.
+                    conoutf(CON_CHAT, "%s\f6: %s", chatcolorname(d), text);
+                }
+                else
+                {
+                    // Standard chat message.
+                    conoutf(CON_CHAT, "%s:\f0 %s", chatcolorname(d), text);
+                }
                 break;
             }
 
@@ -1354,7 +1365,16 @@ namespace game
                 if(!t || isignored(t->clientnum)) break;
                 if(t->state!=CS_DEAD && t->state!=CS_SPECTATOR)
                     particle_textcopy(t->abovehead(), text, PART_TEXT, 2000, 0x6496FF, 4.0f, -8);
-                conoutf(CON_TEAMCHAT, "\fs\f8[team]\fr %s: \f8%s", chatcolorname(t), text);
+                if(strcasestr(text, player1->name) || (strlen(chathighlightname) >= 1 && strcasestr(text, chathighlightname)))
+                {
+                    // Highlight team chat message. Also highlight the colon to be more visible.
+                    conoutf(CON_TEAMCHAT, "\fs\f8[team]\fr %s\f6: %s", chatcolorname(t), text);
+                }
+                else
+                {
+                    // Standard team chat message.
+                    conoutf(CON_TEAMCHAT, "\fs\f8[team]\fr %s\f6: %s", chatcolorname(t), text);
+                }
                 break;
             }
 

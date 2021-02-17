@@ -61,6 +61,11 @@ on the 2020 edition and include the latest official fixes and improvements.*
     minute left, and yellow when there are less than 3 minutes left.
   - Own chat messages (standard and team) are now displayed in light gray to
     be easier to distinguish from other players' messages.
+  - Chat messages containing your name (case-insensitive) are now displayed in
+    orange ("highlight" messages).
+    - If your name contains clan tags or is frequently shortened by other players,
+      define `/chathighlightname` to use an additional highlight word
+      (in addition to your player name). This word is also case-insensitive.
 - **Tweaked variable defaults:**
   - `aniso` (`0` -> `16`) - 16× anisotropic filtering to make textures look
     better when viewed at oblique angles.
