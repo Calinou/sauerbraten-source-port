@@ -54,6 +54,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - Health is now hidden while dead.
   - FPS counter is now colored depending on the framerate.
   - The respawn counter on the minimap now turns green when it reaches 0.
+  - Blips on the minimap (flags, capture bases, in-game hold flag)
+    now blink faster for easier recognition and following.
   - Game clock now becomes red (instead of yellow) when there is less than 1
     minute left, and yellow when there are less than 3 minutes left.
 - **Tweaked variable defaults:**

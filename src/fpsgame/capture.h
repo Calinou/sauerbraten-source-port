@@ -474,7 +474,7 @@ struct captureclientmode : clientmode
         drawradar(-0.5f*rsize, -0.5f*rsize, rsize);
         pophudmatrix();
         #endif
-        bool showenemies = lastmillis%1000 >= 500;
+        bool showenemies = lastmillis%750 >= 375;
         int fw = 1, fh = 1;
         if(basenumbers)
         {
