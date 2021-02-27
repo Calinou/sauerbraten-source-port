@@ -1166,6 +1166,7 @@ namespace game
 
     VARP(teamcrosshair, 0, 1, 1);
     VARP(hitcrosshair, 0, 425, 1000);
+    FVARP(crosshairwaitalpha, 0.0, 0.5, 1.0);
 
     const char *defaultcrosshair(int index)
     {
@@ -1205,7 +1206,7 @@ namespace game
             else if(d->health<=200) color = vec((200-d->health)/100.0f, 1, (200-d->health)/100.0f);
             else color = vec(0, 1, 0);
         }
-        if(d->gunwait) color.mul(0.5f);
+        if(d->gunwait) color.mul(crosshairwaitalpha);
         return crosshair;
     }
 
