@@ -1373,7 +1373,7 @@ namespace game
                 else
                 {
                     // Standard team chat message.
-                    conoutf(CON_TEAMCHAT, "\fs\f8[team]\fr %s\f6: %s", chatcolorname(t), text);
+                    conoutf(CON_TEAMCHAT, "\fs\f8[team]\fr %s\f8: %s", chatcolorname(t), text);
                 }
                 break;
             }
