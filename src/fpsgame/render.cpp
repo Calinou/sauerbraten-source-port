@@ -191,7 +191,6 @@ namespace game
 
     VARP(teamskins, 0, 0, 1);
 
-#if 0
     // for testing spawns
 
     float hsv2rgb(float h, float s, float v, int n)
@@ -223,7 +222,6 @@ namespace game
     }
 
     VAR(dbgspawns, 0, 0, 1);
-#endif
 
     VARP(statusicons, 0, 1, 1);
 
@@ -348,9 +346,7 @@ namespace game
         renderprojectiles();
         if(cmode) cmode->rendergame();
 
-#if 0
-        if(dbgspawns) renderspawns();
-#endif
+        if((!isconnected() || !multiplayer(false) || m_edit) && dbgspawns) renderspawns();
 
         endmodelbatches();
     }
