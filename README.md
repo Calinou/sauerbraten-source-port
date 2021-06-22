@@ -78,8 +78,10 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `fsaa` (`-1` -> `4`) - 4× MSAA to combat aliasing on polygon edges.
   - `fullconsize` (`75` -> `85`) - Taller full console (`saycommand` line is still visible just below).
   - `guiclicktab` (`0` -> `1`) - Click to switch GUI tabs (instead of merely hovering them).
+  - `hidefrags` (`1` -> `0`) - Always display frags in the scoreboard, even in capture and CTF modes.
   - `miniconsize` (`5` -> `8`) - More chat messages on screen.
   - `minimapsize` (`8` -> `10`) - Sharper minimap.
+  - `showdeaths` (`0` -> `1`) - Display the number of deaths for each player in the scoreboard.
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
   - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
   - `soundfreq` (`22050` -> `48000`) - Improved sound quality.
