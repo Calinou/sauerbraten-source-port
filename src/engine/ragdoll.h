@@ -503,8 +503,8 @@ void ragdolldata::move(dynent *pl, float ts)
     calcboundsphere();
 }    
 
-FVAR(ragdolleyesmooth, 0, 0.5f, 1);
-VAR(ragdolleyesmoothmillis, 1, 250, 10000);
+FVARP(ragdolleyesmooth, 0, 0.5f, 1);
+VARP(ragdolleyesmoothmillis, 1, 250, 10000);
 
 void moveragdoll(dynent *d)
 {
@@ -531,4 +531,3 @@ void cleanragdoll(dynent *d)
 {
     DELETEP(d->ragdoll);
 }
-

@@ -25,6 +25,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
   Both are set to values optimized for responsive, jitter-free gameplay by default.
 - Blob shadows are now displayed when shadow maps are enabled to fake ambient occlusion.
 - Tweaked blob shadows to be more subtle and fade more progressively when jumping.
+- Made the `/ragdolleyesmooth` and `/ragdolleyesmoothmillis` variables persistent
+  across restarts.
 - Exposed `/dbgspawns 1` to debug playerstart spawn probability in local games
   and coop edit mode.
   - This feature is present in the vanilla codebase, but is commented out.
