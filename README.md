@@ -75,32 +75,32 @@ on the 2020 edition and include the latest official fixes and improvements.*
       define `/chathighlightname` to use an additional highlight word
       (in addition to your player name). This word is also case-insensitive.
 - **Tweaked variable defaults:**
-  - `aniso` (`0` -> `16`) - 16× anisotropic filtering to make textures look
+  - `aniso` (`0` → `16`) – 16× anisotropic filtering to make textures look
     better when viewed at oblique angles.
-  - `conscale` (`0.33` -> `0.42`) - Larger console text.
-  - `consize` (`5` -> `7`) - More console messages on screen.
-  - `depthbits` (`0` -> `24`) - Fixes Z-fighting in large maps on Intel IGPs.
-  - `fov` (`100` -> `107`) - Matches 16:9 displays (equivalent to `/fov 90` on 4:3).
-  - `fsaa` (`-1` -> `4`) - 4× MSAA to combat aliasing on polygon edges.
-  - `fullconsize` (`75` -> `85`) - Taller full console (`saycommand` line is still visible just below).
-  - `guiclicktab` (`0` -> `1`) - Click to switch GUI tabs (instead of merely hovering them).
-  - `hidefrags` (`1` -> `0`) - Always display frags in the scoreboard, even in capture and CTF modes.
-  - `miniconsize` (`5` -> `8`) - More chat messages on screen.
-  - `minimapsize` (`8` -> `10`) - Sharper minimap.
-  - `showdeaths` (`0` -> `1`) - Display the number of deaths for each player in the scoreboard.
-  - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
-  - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
-  - `soundfreq` (`22050` -> `48000`) - Improved sound quality.
-  - `animationinterpolationtime` (`150` -> `220`) - Smoother animation interpolation (visible on players).
+  - `conscale` (`0.33` → `0.42`) – Larger console text.
+  - `consize` (`5` → `7`) – More console messages on screen.
+  - `depthbits` (`0` → `24`) – Fixes Z-fighting in large maps on Intel IGPs.
+  - `fov` (`100` → `107`) – Matches 16:9 displays (equivalent to `/fov 90` on 4:3).
+  - `fsaa` (`-1` → `4`) – 4× MSAA to combat aliasing on polygon edges.
+  - `fullconsize` (`75` → `85`) – Taller full console (`saycommand` line is still visible just below).
+  - `guiclicktab` (`0` → `1`) – Click to switch GUI tabs (instead of merely hovering them).
+  - `hidefrags` (`1` → `0`) – Always display frags in the scoreboard, even in capture and CTF modes.
+  - `miniconsize` (`5` → `8`) – More chat messages on screen.
+  - `minimapsize` (`8` → `10`) – Sharper minimap.
+  - `showdeaths` (`0` → `1`) – Display the number of deaths for each player in the scoreboard.
+  - `showwaypointsradius` (`200` → `500`) – See waypoints from further away.
+  - `soundbufferlen` (`1024` → `768`) – Lower sound latency.
+  - `soundfreq` (`22050` → `48000`) – Improved sound quality.
+  - `animationinterpolationtime` (`150` → `220`) – Smoother animation interpolation (visible on players).
 - **Tweaked variable limits:**
-  - `avatarfov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
-  - `avatarzoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
-  - `conscale` (`0.001..1000.0` -> `0.3..2.0`) - Prevents the console from
+  - `avatarfov` (`10..150` → `1..179`) – For triple-monitor/surround setups.
+  - `avatarzoomfov` (`10..60` → `1..179`) – Allows more subtle zoom.
+  - `conscale` (`0.001..1000.0` → `0.3..2.0`) – Prevents the console from
     becoming unusable due to extremely low or high values.
-  - `fov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
-  - `minimapsize` (`7..10` -> `7..11`) - Even sharper minimap.
-  - `shadowmapsize` (`7..11` -> `7..12`) - Sharper/better-looking shadowmaps.
-  - `zoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
+  - `fov` (`10..150` → `1..179`) – For triple-monitor/surround setups.
+  - `minimapsize` (`7..10` → `7..11`) – Even sharper minimap.
+  - `shadowmapsize` (`7..11` → `7..12`) – Sharper/better-looking shadowmaps.
+  - `zoomfov` (`10..60` → `1..179`) – Allows more subtle zoom.
 
 ## Installation
 
