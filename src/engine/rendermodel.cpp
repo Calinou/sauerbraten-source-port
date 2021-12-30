@@ -1,7 +1,7 @@
 #include "engine.h"
 
 VAR(oqdynent, 0, 1, 1);
-VAR(animationinterpolationtime, 0, 150, 1000);
+VAR(animationinterpolationtime, 0, 220, 1000);
 
 model *loadingmodel = NULL;
 
@@ -1087,7 +1087,7 @@ void renderclient(dynent *d, const char *mdlname, modelattach *attachments, int 
         }
 
         if(d->inwater && d->physstate<=PHYS_FALL) anim |= (((game::allowmove(d) && (d->move || d->strafe)) || d->vel.z+d->falling.z>0 ? ANIM_SWIM : ANIM_SINK)|ANIM_LOOP)<<ANIM_SECONDARY;
-        else if(d->timeinair>100) anim |= (ANIM_JUMP|ANIM_END)<<ANIM_SECONDARY;
+        else if(d->timeinair>animationinterpolationtime) anim |= (ANIM_JUMP|ANIM_END)<<ANIM_SECONDARY;
         else if(game::allowmove(d) && (d->move || d->strafe)) 
         {
             if(d->move>0 && !d->strafe) anim |= (ANIM_FORWARD|ANIM_LOOP)<<ANIM_SECONDARY;

@@ -16,6 +16,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - Improved coloring and capitalization for console messages.
 - New `^f9` console color code (light gray).
 - Strafe movement animation is now used when moving diagonally forwards.
+- Improved animation interpolation using in-out easing.
 - Tweaked default color for bot waypoints to make them more visible.
 - Quad damage attack sound now plays continuously when firing the chaingun.
 - Customizable color for bot waypoints (e.g. `/showwaypointscolour 0xffffff`).
@@ -90,6 +91,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `showwaypointsradius` (`200` -> `500`) - See waypoints from further away.
   - `soundbufferlen` (`1024` -> `768`) - Lower sound latency.
   - `soundfreq` (`22050` -> `48000`) - Improved sound quality.
+  - `animationinterpolationtime` (`150` -> `220`) - Smoother animation interpolation (visible on players).
 - **Tweaked variable limits:**
   - `avatarfov` (`10..150` -> `1..179`) - For triple-monitor/surround setups.
   - `avatarzoomfov` (`10..60` -> `1..179`) - Allows more subtle zoom.
