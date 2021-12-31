@@ -733,8 +733,8 @@ void pushhudtranslate(float tx, float ty, float sx, float sy)
 
 float curfov = 100, curavatarfov = 65, fovy, aspect;
 int farplane;
-VARP(zoominvel, 0, 250, 5000);
-VARP(zoomoutvel, 0, 100, 5000);
+VARP(zoominvel, 0, 220, 5000);
+VARP(zoomoutvel, 0, 160, 5000);
 VARP(zoomfov, 1, 45, 150);
 VARP(fov, 1, 90, 150);
 VAR(avatarzoomfov, 1, 25, 150);
@@ -769,10 +769,14 @@ void computezoom()
         if(zoomprogress <= 0) zoom = 0;
     }
 
+    // use in-out easing for smoother appearance
+    // https://easings.net/#easeInOutSine
+    float zoomprogresseased = -(cos(PI * zoomprogress) - 1) / 2;
+
     // automatic FOV adjustment for wide screens
     // (horizontal FOV value is always specified for 4:3, but scaled for different aspect ratios)
-    curfov = atan(tan((zoomfov*zoomprogress + fov*(1 - zoomprogress)) * M_PI / 360.0f) * 0.75f * aspect) * 360.0f / M_PI;
-    curavatarfov = avatarzoomfov*zoomprogress + avatarfov*(1 - zoomprogress);
+    curfov = atan(tan((zoomfov*zoomprogresseased + fov*(1 - zoomprogresseased)) * M_PI / 360.0f) * 0.75f * aspect) * 360.0f / M_PI;
+    curavatarfov = avatarzoomfov*zoomprogresseased + avatarfov*(1 - zoomprogresseased);
 }
 
 FVARP(zoomsens, 1e-3f, 1, 1000);
