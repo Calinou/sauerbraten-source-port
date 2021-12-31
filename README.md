@@ -15,6 +15,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - Colored pings in the server browser and scoreboard (greener = better).
 - Improved coloring and capitalization for console messages.
 - New `^f9` console color code (light gray).
+- Automatic FOV adjustment for widescreen aspect ratios. Specify a 4:3 FOV and
+  it will be adjusted automatically.
 - Strafe movement animation is now used when moving diagonally forwards.
 - Improved animation interpolation using in-out easing.
 - Tweaked default color for bot waypoints to make them more visible.
@@ -80,7 +82,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `conscale` (`0.33` → `0.42`) – Larger console text.
   - `consize` (`5` → `7`) – More console messages on screen.
   - `depthbits` (`0` → `24`) – Fixes Z-fighting in large maps on Intel IGPs.
-  - `fov` (`100` → `107`) – Matches 16:9 displays (equivalent to `/fov 90` on 4:3).
+  - `fov` (`100` → `90`) – Hor+ FOV is now used (the new value is equivalent to `/fov 90` on 4:3).
+  - `zoomfov` (`35` → `45`) – Wider zoom FOV to be more useful in common situations (also using Hor+ now).
   - `fsaa` (`-1` → `4`) – 4× MSAA to combat aliasing on polygon edges.
   - `fullconsize` (`75` → `85`) – Taller full console (`saycommand` line is still visible just below).
   - `guiclicktab` (`0` → `1`) – Click to switch GUI tabs (instead of merely hovering them).

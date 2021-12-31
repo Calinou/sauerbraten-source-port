@@ -735,10 +735,10 @@ float curfov = 100, curavatarfov = 65, fovy, aspect;
 int farplane;
 VARP(zoominvel, 0, 250, 5000);
 VARP(zoomoutvel, 0, 100, 5000);
-VARP(zoomfov, 1, 35, 179);
-VARP(fov, 1, 107, 179);
-VAR(avatarzoomfov, 1, 25, 179);
-VAR(avatarfov, 1, 65, 179);
+VARP(zoomfov, 1, 45, 150);
+VARP(fov, 1, 90, 150);
+VAR(avatarzoomfov, 1, 25, 150);
+VAR(avatarfov, 1, 65, 150);
 FVAR(avatardepth, 0, 0.5f, 1);
 FVARNP(aspect, forceaspect, 0, 0, 1e3f);
 
@@ -753,14 +753,25 @@ void disablezoom()
 
 void computezoom()
 {
-    if(!zoom) { zoomprogress = 0; curfov = fov; curavatarfov = avatarfov; return; }
+    if(!zoom) {
+        zoomprogress = 0;
+        // automatic FOV adjustment for wide screens
+        // (horizontal FOV value is always specified for 4:3, but scaled for different aspect ratios)
+        curfov = atan(tan(fov * M_PI / 360.0f) * 0.75f * aspect) * 360.0f / M_PI;
+        curavatarfov = avatarfov;
+        return;
+    }
+
     if(zoom > 0) zoomprogress = zoominvel ? min(zoomprogress + float(elapsedtime) / zoominvel, 1.0f) : 1;
     else
     {
         zoomprogress = zoomoutvel ? max(zoomprogress - float(elapsedtime) / zoomoutvel, 0.0f) : 0;
         if(zoomprogress <= 0) zoom = 0;
     }
-    curfov = zoomfov*zoomprogress + fov*(1 - zoomprogress);
+
+    // automatic FOV adjustment for wide screens
+    // (horizontal FOV value is always specified for 4:3, but scaled for different aspect ratios)
+    curfov = atan(tan((zoomfov*zoomprogress + fov*(1 - zoomprogress)) * M_PI / 360.0f) * 0.75f * aspect) * 360.0f / M_PI;
     curavatarfov = avatarzoomfov*zoomprogress + avatarfov*(1 - zoomprogress);
 }
 
