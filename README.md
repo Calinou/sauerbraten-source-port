@@ -126,6 +126,6 @@ sources to run it.
 
 Copyright © 2001-2020 Wouter van Oortmerssen, Lee Salzman, Mike Dysart, Robert Pointon, and Quinton Reeves
 
-Mod changes © 2020 Hugo Locurcio (see Git history)
+Mod changes © 2020-2022 Hugo Locurcio (see Git history)
 
 Licensed under the Zlib license, see [LICENSE.txt](LICENSE.txt) for details.
