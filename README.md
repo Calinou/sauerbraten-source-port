@@ -41,7 +41,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - **Improved particle effects:**
   - Players landing from a high jump now create a smoke puff (`/landingvfx 0` to disable).
   - Entering and leaving water/lava now creates splash particles (`/liquidvfx 0` to disable).
-  - Teleports and teledests nwo emit blue sparks when used (`/teleportvfx 0` to disable).
+  - Teleports and teledests now emit blue sparks when used (`/teleportvfx 0` to disable).
   - Jumppads now emit green sparks when used (`/jumppadvfx 0` to disable).
 - **Improved dynamic light effects:**
   - Teleports and teledests now emit a blue dynamic light when used (`/teleportvfx 0` to disable).
@@ -120,7 +120,7 @@ sources to run it.
   in modified versions of the game.)
 - Compile a client and server binary. On Linux, enter `make -C src install` in a terminal while in
   the root folder of the cloned repository.
-- Run the game by entering `./auerbraten_unix` in the root folder.
+- Run the game by entering `./sauerbraten_unix` in the root folder.
 
 ## License
 
