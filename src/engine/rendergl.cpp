@@ -735,10 +735,10 @@ float curfov = 100, curavatarfov = 65, fovy, aspect;
 int farplane;
 VARP(zoominvel, 0, 220, 5000);
 VARP(zoomoutvel, 0, 160, 5000);
-VARP(zoomfov, 1, 45, 150);
-VARP(fov, 1, 90, 150);
-VAR(avatarzoomfov, 1, 25, 150);
-VAR(avatarfov, 1, 65, 150);
+VARP(zoomfov, 10, 45, 150);
+VARP(fov, 10, 90, 150);
+VARP(avatarzoomfov, 10, 30, 150);
+VARP(avatarfov, 10, 65, 150);
 FVAR(avatardepth, 0, 0.5f, 1);
 FVARNP(aspect, forceaspect, 0, 0, 1e3f);
 

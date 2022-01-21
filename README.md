@@ -15,8 +15,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - Colored pings in the server browser and scoreboard (greener = better).
 - Improved coloring and capitalization for console messages.
 - New `^f9` console color code (light gray).
-- Automatic FOV adjustment for widescreen aspect ratios. Specify a 4:3 FOV and
-  it will be adjusted automatically.
+- Automatic FOV adjustment for widescreen aspect ratios. Specify a 4:3 horizontal
+  FOV and it will be adjusted automatically to any aspect ratio.
 - Strafe movement animation is now used when moving diagonally forwards.
 - Improved animation and zoom FOV interpolation using in-out easing.
 - Tweaked default color for bot waypoints to make them more visible.
@@ -29,6 +29,8 @@ on the 2020 edition and include the latest official fixes and improvements.*
 - Blob shadows are now displayed when shadow maps are enabled to fake ambient occlusion.
 - Tweaked blob shadows to be more subtle and fade more progressively when jumping.
 - Made the `/ragdolleyesmooth` and `/ragdolleyesmoothmillis` variables persistent
+  across restarts.
+- Made the hudgun FOV variables (`/avatarfov` and `/avatarzoomfov`) persistent
   across restarts.
 - Exposed `/dbgspawns 1` to debug playerstart spawn probability in local games
   and coop edit mode.
@@ -84,6 +86,7 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `depthbits` (`0` → `24`) – Fixes Z-fighting in large maps on Intel IGPs.
   - `fov` (`100` → `90`) – Hor+ FOV is now used (the new value is equivalent to `/fov 90` on 4:3).
   - `zoomfov` (`35` → `45`) – Wider zoom FOV to be more useful in common situations (also using Hor+ now).
+  - `avatarzoomfov` (`25` -> `30`) - Wider hudgun zoom FOV to match the new default zoom FOV.
   - `fsaa` (`-1` → `4`) – 4× MSAA to combat aliasing on polygon edges.
   - `fullconsize` (`75` → `85`) – Taller full console (`saycommand` line is still visible just below).
   - `guiclicktab` (`0` → `1`) – Click to switch GUI tabs (instead of merely hovering them).
@@ -98,14 +101,11 @@ on the 2020 edition and include the latest official fixes and improvements.*
   - `zoominvel` (`250` → `220`) - More reactive FOV change when zooming.
   - `zoominvel` (`100` → `160`) - Smoother FOV change when unzooming.
 - **Tweaked variable limits:**
-  - `avatarfov` (`10..150` → `1..179`) – For triple-monitor/surround setups.
-  - `avatarzoomfov` (`10..60` → `1..179`) – Allows more subtle zoom.
   - `conscale` (`0.001..1000.0` → `0.3..2.0`) – Prevents the console from
     becoming unusable due to extremely low or high values.
-  - `fov` (`10..150` → `1..179`) – For triple-monitor/surround setups.
   - `minimapsize` (`7..10` → `7..11`) – Even sharper minimap.
   - `shadowmapsize` (`7..11` → `7..12`) – Sharper/better-looking shadowmaps.
-  - `zoomfov` (`10..60` → `1..179`) – Allows more subtle zoom.
+  - `zoomfov` (`10..60` → `10..150`) – Allows for more subtle zoom FOV.
 
 ## Installation
 
